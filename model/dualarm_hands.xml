@@ -1,0 +1,548 @@
+<mujoco model="dualarm">
+    <compiler angle="radian" meshdir="meshes/" />
+    <option collision ="predefined" cone="elliptic" jacobian="sparse" tolerance="1e-6" iterations="30" solver="CG" timestep="0.002" noslip_iterations="30" noslip_tolerance="1e-5" mpr_iterations="50">
+        <!-- <flag frictionloss="disable"/> -->
+    </option>
+    <size njmax="8000" nconmax="4000" />
+    <asset>
+        <mesh name="base_link" file="base_link.STL" />
+        <mesh name="body_link" file="body_link.STL" />
+        <mesh name="LShP_Link" file="LShP_Link.STL" />
+        <mesh name="LShR_Link" file="LShR_Link.STL" />
+        <mesh name="LShY_Link" file="LShY_Link.STL" />
+        <mesh name="LElP_Link" file="LElP_Link.STL" />
+        <mesh name="LWrY_Link" file="LWrY_Link.STL" />
+        <mesh name="LWrP_Link" file="LWrP_Link.STL" />
+        <mesh name="LWrR_Link" file="LWrR_Link.STL" />
+        <mesh name="RShP_Link" file="RShP_Link.STL" />
+        <mesh name="RShR_Link" file="RShR_Link.STL" />
+        <mesh name="RShY_Link" file="RShY_Link.STL" />
+        <mesh name="RElP_Link" file="RElP_Link.STL" />
+        <mesh name="RWrY_Link" file="RWrY_Link.STL" />
+        <mesh name="RWrP_Link" file="RWrP_Link.STL" />
+        <mesh name="RWrR_Link" file="RWrR_Link.STL" />
+    </asset>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" width="128" height="128" rgb1=".4 .6 .8" rgb2="0 0 0"/> 
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="128" height="128" 
+            rgb1="0.6 0.6 0.6" rgb2="0.6 0.6 0.6" markrgb="1 1 1"/>  
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".4 .4 .4" rgb2=".6 .6 .6" 
+            width="512" height="512"/>  
+        <material name='MatPlane' reflectance='0.3' texture="texplane" texrepeat="1 1" texuniform="true"/>
+    </asset>
+
+     <visual>
+        <quality shadowsize="2048" offsamples="16"/>
+        <map znear="0.1" force="0.05"/>
+    </visual>
+
+    <statistic extent="4"/>
+
+    
+    <worldbody>
+        <light directional="true" diffuse=".8 .8 .8" pos="0 0 10" dir="0 0 -10"/>
+        <geom name="ground" pos="0 0 0" type="plane" size="10 10 .05" rgba=".7 .7 .7 1" material="MatPlane"/>
+
+        <!-- camera -->
+        <camera mode ="targetbodycom" name = "tracking com" pos="4 -1 2" euler="90 0 0" target="body_link"/> 
+        
+        <geom name = "base_link" type="mesh" rgba="0.50196 1 0.50196 1" mesh="base_link" />
+        <body name="body_link" pos="0 0.1598 0.5727" quat="0.5 0.5 0.5 0.5">
+            <!-- camera -->
+            <camera mode ="track" name = "right" pos="0.4 0 2" euler="0 0 0"/>
+            <camera mode ="fixed" name = "front" pos="2 0.35 0" euler="0 1.6 0"/> 
+
+            <inertial pos="0.070879 0.38092 3.2435e-05" quat="0.999702 0.0241074 -0.0011948 0.0035823" mass="5.9559" diaginertia="0.0175723 0.0128361 0.0126716" />
+            <joint name="j0" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="-0.3 0.3" damping="5" frictionloss="1" />
+            <!-- <site name = "joint0" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+            <geom name="body_Link" type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="body_link" />
+            <body name="LShP_Link" pos="0.0762 0.3943 -0.121">
+                <inertial pos="-0.013031 -8.3122e-05 -0.078324" quat="0.5 0.5 -0.5 0.5" mass="2.0773" diaginertia="1.17744 1.17744 1.17744" />
+                <joint name="j1" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                <!-- <site name = "joint1" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                <geom name="LShP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LShP_Link" />
+                <body name="LShR_Link" pos="0.023 0 -0.089">
+                    <inertial pos="-0.020572 -0.12696 2.6805e-05" quat="1 0 0 -1.24725e-05" mass="1.9866" diaginertia="1.1772 1.1772 1.1772" />
+                    <joint name="j2" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                    <!-- <site name = "joint2" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                    <geom name="LShR_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LShR_Link" />
+                    <body name="LShY_Link" pos="-0.023 -0.1595 0">
+                        <inertial pos="-1.906e-06 -0.11912 -0.006149" quat="0.499999 0.500001 0.499999 0.500001" mass="1.8888" diaginertia="0.83085 0.83085 0.83085" />
+                        <joint name="j3" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                        <!-- <site name = "joint3" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                        <geom name="LShY_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LShY_Link" />
+                        <body name="LElP_Link" pos="0 -0.1305 0.004">
+                            <inertial pos="-9.5593e-05 -0.10373 -0.0011155" quat="-0.0014133 0.707105 0.00139785 0.707105" mass="1.1558" diaginertia="0.830148 0.830148 0.830148" />
+                            <joint name="j4" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                            <!-- <site name = "joint4" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                            <geom name="LElP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LElP_Link" />
+                            <body name="LWrY_Link" pos="0 -0.12411 -0.004">
+                                <inertial pos="-4.2008e-05 -0.092156 -0.003711" quat="0.5 0.5 0.5 0.5" mass="1.3048" diaginertia="0.461587 0.461587 0.461587" />
+                                <joint name="j5" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                                <!-- <site name = "joint5" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                <geom name="LWrY_Link" type="mesh" rgba="0.89804 0.89804 0.89804 1" mesh="LWrY_Link" />
+                                <body name="LWrP_Link" pos="0 -0.16589 -0.042">
+                                    <inertial pos="0.0032734 -0.00018748 0.041704" quat="0.499518 0.500481 -0.499518 0.500481" mass="1.0771" diaginertia="0.461324 0.461324 0.461324" />
+                                    <joint name="j6" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                                    <!-- <site name = "joint6" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                    <geom name = "LWrP_Link" type="mesh" rgba="1 0.94902 0.9098 1" mesh="LWrP_Link" />
+                                    <body name="LWrR_Link" pos="0.0177 0 0.042">
+                                        <inertial pos="-0.00647293 -0.0900972 -4.57472e-07" quat="0.585687 0.396199 -0.58568 0.396203" mass="0.69256" diaginertia="5.46308 5.4627 5.46151" />
+                                        <joint name="j7" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                                        <!-- <site name = "joint7" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                         <geom name="LWrR_Link" type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="LWrR_Link" />
+                                         <!-- <site name = "L_Sensor" type='sphere' pos = "-0.0177 -0.080748 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                        <!-- <geom type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="LWrR_Link" /> -->
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+            <body name="RShP_Link" pos="0.0762 0.3943 0.121">
+                <inertial pos="-0.013031 -8.2555e-05 0.078324" quat="0.5 0.5 -0.5 0.5" mass="2.0773" diaginertia="1.17744 1.17744 1.17744" />
+                <joint name="j8" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                <!-- <site name = "joint8" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                <geom name="RShP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RShP_Link" />
+                <body name="RShR_Link" pos="0.023 0 0.089">
+                    <inertial pos="-0.020572 -0.12696 -2.6614e-05" quat="1 0 0 -1.24725e-05" mass="1.9866" diaginertia="1.1772 1.1772 1.1772" />
+                    <joint name="j9" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                    <!-- <site name = "joint9" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                    <geom name="RShR_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RShR_Link" />
+                    <body name="RShY_Link" pos="-0.023 -0.1595 0">
+                        <inertial pos="-1.1816e-06 -0.11912 0.006149" quat="0.500001 0.499999 0.500001 0.499999" mass="1.8888" diaginertia="0.83085 0.83085 0.83085" />
+                        <joint name="j10" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                        <!-- <site name = "joint10" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                        <geom name="RShY_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RShY_Link" />
+                        <body name="RElP_Link" pos="0 -0.1305 -0.004">
+                            <inertial pos="-0.00011214 -0.10373 0.0010998" quat="-0.00229816 0.707103 0.00231357 0.707103" mass="1.1558" diaginertia="0.830148 0.830148 0.830148" />
+                            <joint name="j11" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                            <!-- <site name = "joint11" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                            <geom name="RElP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RElP_Link" />
+                            <body name="RWrY_Link" pos="0 -0.12411 0.004">
+                                <inertial pos="-5.7522e-05 -0.092145 0.0037353" quat="0.5 0.5 0.5 0.5" mass="1.3048" diaginertia="0.461587 0.461587 0.461587" />
+                                <joint name="j12" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                                <!-- <site name = "joint12" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                <geom name="RWrY_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RWrY_Link" />
+                                <body name="RWrP_Link" pos="0 -0.16589 0.042">
+                                    <inertial pos="0.0022235 -0.00018748 -0.041704" quat="0.499518 0.500482 -0.499518 0.500482" mass="1.0771" diaginertia="0.461324 0.461324 0.461324" />
+                                    <joint name="j13" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                                    <!-- <site name = "joint13" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                    <geom name ="RWrP_Link" type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="RWrP_Link" />
+                                    <body name="RWrR_Link" pos="0.0177 0 -0.042">
+                                        <inertial pos="-0.000663631 -0.12247 -0.00135733" quat="0.520195 0.45437 -0.556235 0.462113" mass="0.684331" diaginertia="0.466442 0.466006 0.461597" />
+                                        <joint name="j14" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="1" />
+                                        <!-- <site name = "joint14" type='sphere' pos = "0 0 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                        <geom name="RWrR_Link" type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="RWrR_Link" />
+                                        <!-- <site name = "R_Sensor" type='sphere' pos = "-0.0177 -0.080748 0" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+                                        <!-- <geom type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="RWrR_Link" /> -->
+                                        
+                                     </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+  
+
+<!-- ***************************** box *************************** -->
+        <!-- <body name="object_box" pos = "0.0 0.78 0.721" euler="3.14159265359 1.57079632679 0"> -->
+        <!-- <body name="object_box" pos = "0.0 0.78 0.721">
+            <freejoint/>
+            <inertial pos="0.0 0.0 0.0"  mass="5.0" diaginertia="0.002 0.002 0.004" />
+            <geom name = "object_box" type="box" size="0.04 0.04 0.09" rgba = "0.96 0.15 0.15 1"/> -->
+            <!-- <site name = "object_box" type='sphere' pos = "0.0 0.78 0.721" size="0.01" rgba = "0.5 0.5 0.7 1"/> -->
+        <!-- </body> -->
+
+<!-- ************************** table 1 ************************* -->
+         <!-- <body name="object_table 1" pos ="0.0 0.78 0.59">
+            <freejoint/>
+            <inertial pos="0 0 0" mass="10.0" diaginertia="0.5 0.5 0.5"/>
+            <geom name="object_table 1" type="box" size="0.185 0.21 0.005" rgba="0.0 0.0 0.0 1"/>
+        </body>
+        <body name="object_table_leg 1" pos="0.0925 0.675 0.3">
+            <freejoint/>
+            <inertial pos="0 0 0" mass="2.0" diaginertia="0.5 0.5 0.5"/>
+            <geom name="object_table_leg 1" type="cylinder" size="0.0225 0.3" rgba="0.0 0.0 0.0 1"/>
+        </body>
+        <body name="object_table_leg 2" pos="-0.0925 0.675 0.3">
+            <freejoint/>
+            <inertial pos="0 0 0" mass="2.0" diaginertia="0.5 0.5 0.5"/>
+            <geom name="object_table_leg 2" type="cylinder" size="0.0225 0.3" rgba="0.0 0.0 0.0 1"/>
+        </body>
+        <body name="object_table_leg 3" pos="-0.0925 0.885 0.3">
+            <freejoint/>
+            <inertial pos="0 0 0" mass="2.0" diaginertia="0.5 0.5 0.5"/>
+            <geom name="object_table_leg 3" type="cylinder" size="0.0225 0.3" rgba="0.0 0.0 0.0 1"/>
+        </body>
+        <body name="object_table_leg 4" pos="0.0925 0.885 0.3">
+            <freejoint/>
+            <inertial pos="0 0 0" mass="2.0" diaginertia="0.5 0.5 0.5"/>
+            <geom name="object_table_leg 4" type="cylinder" size="0.0225 0.3" rgba="0.0 0.0 0.0 1"/>
+        </body> -->
+    </worldbody>
+
+
+
+
+    <contact> 
+        <!-- ********************** ground - table leg & box ********************** -->
+        <!-- <pair geom1 ="base_link" geom2 ="LShP_Link" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin = "0.0"/> -->
+
+        
+        <!-- <exclude body1 ="LShP_Link" body2 ="LShY_Link" />
+        <exclude body1 ="LShP_Link" body2 ="LElP_Link" />
+        <exclude body1 ="LShP_Link" body2 ="LWrY_Link" />
+        <exclude body1 ="LShP_Link" body2 ="LWrP_Link" />
+        <exclude body1 ="LShP_Link" body2 ="LWrR_Link" />
+        <exclude body1 ="LShP_Link" body2 ="RShP_Link" />
+        <exclude body1 ="LShP_Link" body2 ="RShR_Link" />
+        <exclude body1 ="LShP_Link" body2 ="RShY_Link" />
+        <exclude body1 ="LShP_Link" body2 ="RElP_Link" />
+        <exclude body1 ="LShP_Link" body2 ="RWrY_Link" />
+        <exclude body1 ="LShP_Link" body2 ="RWrP_Link" />
+        <exclude body1 ="LShP_Link" body2 ="RWrR_Link" /> -->
+        <!-- <pair geom1 ="body_Link" geom2 ="LShP_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        
+        <pair geom1 ="body_Link" geom2 ="RShP_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="LShP_Link" geom2 ="LShR_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="LShR_Link" geom2 ="LShY_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="LShY_Link" geom2 ="LElP_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="LElP_Link" geom2 ="LWrY_Link" condim="1" margin = "0.0" gap = "10.0"/>        
+        <pair geom1 ="LWrY_Link" geom2 ="LWrP_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="LWrP_Link" geom2 ="LWrR_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="RShP_Link" geom2 ="RShR_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="RShR_Link" geom2 ="RShY_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="RShY_Link" geom2 ="RElP_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="RElP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="RWrY_Link" geom2 ="RWrP_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="RWrP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.0" gap = "10.0"/>
+        <pair geom1 ="base_link" geom2 ="LShP_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="LShR_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="LShY_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="LElP_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="LWrY_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="LWrP_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="LWrR_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="RShP_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="RShR_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="RShY_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="RElP_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="RWrY_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="RWrP_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="base_link" geom2 ="RWrR_Link" condim="1" margin = "0.01"/>
+        <pair geom1 ="body_Link" geom2 ="LShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="LShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="LElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="LWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="LWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="LWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="body_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="LShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="LElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="LWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="LWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="LWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="RShP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="LElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="LWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="LWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="LWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="RShP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShR_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="LWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="LWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="LWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="RShP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LShY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="LWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="LWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="RShP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LElP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="LWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="RShP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrP_Link" geom2 ="RShP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrP_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrP_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrP_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrR_Link" geom2 ="RShP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrR_Link" geom2 ="RShR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrR_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrR_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrR_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrR_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="LWrR_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShP_Link" geom2 ="RShY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShP_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShR_Link" geom2 ="RElP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShR_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShR_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShR_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShY_Link" geom2 ="RWrY_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShY_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RShY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RElP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RElP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" />
+        <pair geom1 ="RWrY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.01" /> -->
+
+
+        <!-- <pair geom1 ="base_link" geom2 ="LShP_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="LShR_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="LShY_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="LElP_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="LWrY_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="LWrP_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="LWrR_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="RShP_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="RShR_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="RShY_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="RElP_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="RWrY_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="RWrP_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="base_link" geom2 ="RWrR_Link" condim="1" margin = "0.03"/>
+        <pair geom1 ="body_Link" geom2 ="LShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="LShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="LElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="LWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="LWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="LWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="body_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="LShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="LElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="LWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="LWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="LWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="RShP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="LElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="LWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="LWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="LWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="RShP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShR_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="LWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="LWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="LWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="RShP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LShY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="LWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="LWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="RShP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LElP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="LWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="RShP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrP_Link" geom2 ="RShP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrP_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrP_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrP_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrR_Link" geom2 ="RShP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrR_Link" geom2 ="RShR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrR_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrR_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrR_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrR_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="LWrR_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShP_Link" geom2 ="RShY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShP_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShP_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShR_Link" geom2 ="RElP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShR_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShR_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShR_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShY_Link" geom2 ="RWrY_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShY_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RShY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RElP_Link" geom2 ="RWrP_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RElP_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" />
+        <pair geom1 ="RWrY_Link" geom2 ="RWrR_Link" condim="1" margin = "0.03" /> -->
+        
+
+
+        <!-- ********************** table - table leg & box ********************** -->
+        <!-- <pair geom1 ="object_table_leg 1" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.000" condim ="3" margin = "0.0"/>
+        <pair geom1 ="object_table_leg 2" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.000" condim ="3" margin = "0.0"/>
+        <pair geom1 ="object_table_leg 3" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.000" condim ="3" margin = "0.0"/>
+        <pair geom1 ="object_table_leg 4" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.000" condim ="3" margin = "0.0"/>
+        <pair geom1 ="object_table 1" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin = "0.0"/>
+
+        <pair geom1 ="LWrP_Link" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="RWrP_Link" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="R_Plate" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="L_Plate" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="RHandbase_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="base_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+
+        <pair geom1 ="LWrR_Link_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+    	<pair geom1 ="LWrR_Link_geo" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="RWrR_Link_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+       	<pair geom1 ="RWrR_Link_geo" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF1J_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF1J_geo" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF2J_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF2J_geo" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF3J_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF3J_geo" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF4J_geo" geom2 ="object_box" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" />
+        <pair geom1 ="Hand_RF4J_geo" geom2 ="object_table 1" friction ="1 1 0.005 0.0001 0.0001" condim ="3" margin =" 0.0" /> -->
+    </contact>
+
+    <!-- <equality>
+        <weld body1= "object_table_leg 1" relpose="0 1 0 0 0 0 0"/>
+        <weld body1= "object_table_leg 2" relpose="0 1 0 0 0 0 0"/>
+        <weld body1= "object_table_leg 3" relpose="0 1 0 0 0 0 0"/>
+        <weld body1= "object_table_leg 4" relpose="0 1 0 0 0 0 0"/>
+        <weld body1= "object_table_leg 1" body2 ="object_table 1" relpose="0 1 0 0 0 0 0"/>
+        <weld body1= "object_table_leg 2" body2 ="object_table 1" relpose="0 1 0 0 0 0 0"/>
+        <weld body1= "object_table_leg 3" body2 ="object_table 1" relpose="0 1 0 0 0 0 0"/>
+        <weld body1= "object_table_leg 4" body2 ="object_table 1" relpose="0 1 0 0 0 0 0"/>
+    </equality> -->
+
+
+
+    <actuator>
+        <motor name ="joint0"   joint = "j0"/>
+        <motor name ="joint1"   joint = "j1"/>
+        <motor name ="joint2"   joint = "j2"/>
+        <motor name ="joint3"  joint = "j3"/>
+        <motor name ="joint4"  joint = "j4"/>
+        <motor name ="joint5"  joint = "j5"/>
+        <motor name ="joint6"  joint = "j6"/>
+        <motor name ="joint7"  joint = "j7"/>
+        <motor name ="joint8" joint = "j8"/>
+        <motor name ="joint9"  joint = "j9"/>
+        <motor name ="joint10" joint = "j10"/>
+        <motor name ="joint11" joint = "j11"/>
+        <motor name ="joint12"  joint = "j12"/>
+        <motor name ="joint13" joint = "j13"/>
+        <motor name ="joint14" joint = "j14"/>
+
+    </actuator>
+
+    <sensor>
+
+        <!-- <actuatorfrc name ="joint0"  actuator = "joint0"/>
+        <actuatorfrc name ="joint1"  actuator = "joint1"/>
+        <actuatorfrc name ="joint2"  actuator = "joint2"/>
+        <actuatorfrc name ="joint3"  actuator = "joint3"/>
+        <actuatorfrc name ="joint4"  actuator = "joint4"/>
+        <actuatorfrc name ="joint5"  actuator = "joint5"/>
+        <actuatorfrc name ="joint6"  actuator = "joint6"/>
+        <actuatorfrc name ="joint7"  actuator = "joint7"/>
+        <actuatorfrc name ="joint8"  actuator = "joint8"/>
+        <actuatorfrc name ="joint9"  actuator = "joint9"/>
+        <actuatorfrc name ="joint10" actuator = "joint10"/>
+        <actuatorfrc name ="joint11" actuator = "joint11"/>
+        <actuatorfrc name ="joint12" actuator = "joint12"/>
+        <actuatorfrc name ="joint13" actuator = "joint13"/>
+        <actuatorfrc name ="joint14" actuator = "joint14"/>  -->
+        <!-- <torque name ="joint0"  site = "joint0"/>
+        <torque name ="joint1"  site = "joint1"/>
+        <torque name ="joint2"  site = "joint2"/>
+        <torque name ="joint3"  site = "joint3"/>
+        <torque name ="joint4"  site = "joint4"/>
+        <torque name ="joint5"  site = "joint5"/>
+        <torque name ="joint6"  site = "joint6"/>
+        <torque name ="joint7"  site = "joint7"/>
+        <torque name ="joint8"  site = "joint8"/>
+        <torque name ="joint9"  site = "joint9"/>
+        <torque name ="joint10" site = "joint10"/>
+        <torque name ="joint11" site = "joint11"/>
+        <torque name ="joint12" site = "joint12"/>
+        <torque name ="joint13" site = "joint13"/>
+        <torque name ="joint14" site = "joint14"/>  -->
+
+        <!-- <force name="LForce_sensor" noise="0.001" site="L_Sensor"/>
+        <torque name="LTorque_sensor" noise="0.001" site="L_Sensor"/>
+        <force name="RForce_sensor" noise="0.001" site="R_Sensor"/>
+        <torque name="RTorque_sensor" noise="0.001" site="R_Sensor"/> -->
+        <!-- <touch name="LForce_sensor"  site="L_Sensor"/>
+        <touch name="LTorque_sensor"  site="L_Sensor"/>
+        <touch name="RForce_sensor"  site="R_Sensor"/>
+        <touch name="RTorque_sensor"  site="R_Sensor"/> -->
+
+        <!-- <framepos name='object_pos' noise='0.001' objtype='body' objname ='object_box'/> -->
+        <!-- <framepos name='L_arm_pos' noise='0.001' objtype='geom' objname ='base_geo'/>
+        <framepos name='R_arm_pos' noise='0.001' objtype='geom' objname ='RHandbase_geo'/> -->
+
+
+    </sensor>
+
+ </mujoco>

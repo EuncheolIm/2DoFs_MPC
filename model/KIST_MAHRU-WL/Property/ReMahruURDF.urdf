@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ReMahruURDF">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0029530639568736 -4.71827455355517E-10 0.0166079025818468"
+        rpy="0 0 0" />
+      <mass
+        value="0.605889542146858" />
+      <inertia
+        ixx="0.00122475736510921"
+        ixy="-5.67675059524483E-14"
+        ixz="2.85004761569628E-07"
+        iyy="0.000437241757701103"
+        iyz="-7.98310290665398E-13"
+        izz="0.00111144865737045" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="TOP">
+    <inertial>
+      <origin
+        xyz="-0.0150721825588191 1.01090763840492E-05 -0.24833931122709"
+        rpy="0 0 0" />
+      <mass
+        value="4.15859479337905" />
+      <inertia
+        ixx="0.035335920828536"
+        ixy="-2.03707739500188E-12"
+        ixz="0.00175091699710611"
+        iyy="0.0348503237181955"
+        iyz="3.54104094816189E-09"
+        izz="0.0230054656837742" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/TOP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/TOP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="TOP"
+    type="revolute">
+    <origin
+      xyz="0 0 0.15"
+      rpy="3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="TOP" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RA1">
+    <inertial>
+      <origin
+        xyz="-3.40085958328781E-05 0.000794071931654872 -0.102498749395316"
+        rpy="0 0 0" />
+      <mass
+        value="0.460914941355879" />
+      <inertia
+        ixx="0.000182320901772697"
+        ixy="-4.27570686583816E-07"
+        ixz="-3.60387919385566E-08"
+        iyy="0.000210434566712794"
+        iyz="1.97035476812508E-07"
+        izz="0.000337100677416189" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RA1"
+    type="revolute">
+    <origin
+      xyz="0.047556 0.17703 -0.29"
+      rpy="-1.5708 0 -0.087266" />
+    <parent
+      link="TOP" />
+    <child
+      link="RA1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RA2">
+    <inertial>
+      <origin
+        xyz="0.0107176596369752 0.00584164919704588 -0.000282061984762425"
+        rpy="0 0 0" />
+      <mass
+        value="0.419033132868119" />
+      <inertia
+        ixx="0.000212229182677561"
+        ixy="-3.42338182407289E-05"
+        ixz="-1.11872408638641E-05"
+        iyy="0.000234594710973714"
+        iyz="-7.66734200002888E-06"
+        izz="0.000387059772026052" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RA2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 -1.5708 0" />
+    <parent
+      link="RA1" />
+    <child
+      link="RA2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RA3">
+    <inertial>
+      <origin
+        xyz="-0.000664814910748254 -3.02655311396061E-07 0.00411719741184507"
+        rpy="0 0 0" />
+      <mass
+        value="0.59913001621349" />
+      <inertia
+        ixx="0.000257559143406828"
+        ixy="1.25807815987218E-07"
+        ixz="2.62199385350935E-06"
+        iyy="0.000245200619964837"
+        iyz="7.43425430374255E-10"
+        izz="0.000352111301365983" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RA3"
+    type="revolute">
+    <origin
+      xyz="0.035 0.12 0"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="RA2" />
+    <child
+      link="RA3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RA4">
+    <inertial>
+      <origin
+        xyz="2.51616256378984E-07 0.0443627971370281 -0.00354407602066201"
+        rpy="0 0 0" />
+      <mass
+        value="0.497385454869935" />
+      <inertia
+        ixx="0.000652985787025621"
+        ixy="-5.524465247071E-11"
+        ixz="1.07559849686596E-09"
+        iyy="0.000177095247618507"
+        iyz="1.55092937747758E-06"
+        izz="0.000772140373016795" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RA4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RA4"
+    type="revolute">
+    <origin
+      xyz="0 0 0.12"
+      rpy="1.5708 0 0" />
+    <parent
+      link="RA3" />
+    <child
+      link="RA4" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LA1">
+    <inertial>
+      <origin
+        xyz="3.40033838521284E-05 -0.00079407198106618 -0.102498751630049"
+        rpy="0 0 0" />
+      <mass
+        value="0.460914905880953" />
+      <inertia
+        ixx="0.000182320896784584"
+        ixy="-4.2756786247558E-07"
+        ixz="3.60443234734678E-08"
+        iyy="0.000210434564232715"
+        iyz="-1.97036542708407E-07"
+        izz="0.000337100670939011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.627450980392157 0.627450980392157 0.627450980392157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LA1"
+    type="revolute">
+    <origin
+      xyz="0.047556 -0.17703 -0.29"
+      rpy="1.5708 0 0.087266" />
+    <parent
+      link="TOP" />
+    <child
+      link="LA1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LA2">
+    <inertial>
+      <origin
+        xyz="-0.0107176596306042 0.00584224690957658 -0.000282062549039071"
+        rpy="0 0 0" />
+      <mass
+        value="0.41903313280992" />
+      <inertia
+        ixx="0.00021222918277254"
+        ixy="3.42337248576725E-05"
+        ixz="1.11872332526701E-05"
+        iyy="0.000234594711194113"
+        iyz="-7.66948716822907E-06"
+        izz="0.000387059772189012" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LA2"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 1.5708 0" />
+    <parent
+      link="LA1" />
+    <child
+      link="LA2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LA3">
+    <inertial>
+      <origin
+        xyz="-0.000664777603549285 -3.0303400821996E-07 0.00411721055537934"
+        rpy="0 0 0" />
+      <mass
+        value="0.599129875404468" />
+      <inertia
+        ixx="0.000257560686978657"
+        ixy="1.25663189497759E-07"
+        ixz="2.62254959988299E-06"
+        iyy="0.000245199433966278"
+        iyz="6.2397200368717E-10"
+        izz="0.000352112037621528" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LA3"
+    type="revolute">
+    <origin
+      xyz="-0.035 0.12 0"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="LA2" />
+    <child
+      link="LA3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LA4">
+    <inertial>
+      <origin
+        xyz="2.51572577249226E-07 -0.0443627971677607 0.00354407601986273"
+        rpy="0 0 0" />
+      <mass
+        value="0.497385454453283" />
+      <inertia
+        ixx="0.000652985786910438"
+        ixy="5.51789525478768E-11"
+        ixz="-1.07574085148654E-09"
+        iyy="0.000177095247418887"
+        iyz="1.55092938272945E-06"
+        izz="0.00077214037270595" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LA4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LA4"
+    type="revolute">
+    <origin
+      xyz="0 0 0.12"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="LA3" />
+    <child
+      link="LA4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RL1">
+    <inertial>
+      <origin
+        xyz="-0.00665502539857009 -9.30593150255363E-08 -0.0089377034808693"
+        rpy="0 0 0" />
+      <mass
+        value="0.197745366203626" />
+      <inertia
+        ixx="0.000179820214231711"
+        ixy="-2.21404459787447E-10"
+        ixz="9.0982135886623E-06"
+        iyy="0.000174134410918561"
+        iyz="7.10267965934353E-11"
+        izz="0.000274933877476648" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL1"
+    type="revolute">
+    <origin
+      xyz="0 -0.0405 0"
+      rpy="-1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="RL1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RL2">
+    <inertial>
+      <origin
+        xyz="4.95575876057723E-05 0.109636846959091 0.00128400562158251"
+        rpy="0 0 0" />
+      <mass
+        value="1.10274171243774" />
+      <inertia
+        ixx="0.00898951687803171"
+        ixy="3.14806065565501E-07"
+        ixz="-8.3703931663681E-10"
+        iyy="0.000737902806980501"
+        iyz="-8.55467870725478E-06"
+        izz="0.00942917954692986" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL2"
+    type="revolute">
+    <origin
+      xyz="-0.088 0 0"
+      rpy="0 1.5708 0" />
+    <parent
+      link="RL1" />
+    <child
+      link="RL2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RL3">
+    <inertial>
+      <origin
+        xyz="-0.00411646314727131 0.139854320464728 -0.00140195639867541"
+        rpy="0 0 0" />
+      <mass
+        value="1.99975460206234" />
+      <inertia
+        ixx="0.018277616456616"
+        ixy="0.00137186768577169"
+        ixz="-8.05999539755394E-05"
+        iyy="0.00176840901955816"
+        iyz="0.000819912520632891"
+        izz="0.0195218687426674" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL3"
+    type="revolute">
+    <origin
+      xyz="0 0.34 0"
+      rpy="0 0 0" />
+    <parent
+      link="RL2" />
+    <child
+      link="RL3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RL4">
+    <inertial>
+      <origin
+        xyz="0.0947472231202401 -0.00117018362130372 -0.00760094930336763"
+        rpy="0 0 0" />
+      <mass
+        value="0.309335951793612" />
+      <inertia
+        ixx="5.31830959765888E-05"
+        ixy="3.18341958260555E-05"
+        ixz="2.80053146141577E-05"
+        iyy="0.000843945755975692"
+        iyz="-1.33547896656136E-07"
+        izz="0.00085006723884717" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RL4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL4"
+    type="revolute">
+    <origin
+      xyz="0 0.292 -0.049"
+      rpy="-3.1416 0 0" />
+    <parent
+      link="RL3" />
+    <child
+      link="RL4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="RW">
+    <inertial>
+      <origin
+        xyz="-3.13582492968284E-05 2.36301357616764E-05 0.00592704058953694"
+        rpy="0 0 0" />
+      <mass
+        value="0.70265402062641" />
+      <inertia
+        ixx="0.000924713396596756"
+        ixy="-4.12208118984732E-07"
+        ixz="4.83145045225568E-07"
+        iyy="0.000924476999044575"
+        iyz="-3.64075905616761E-07"
+        izz="0.00171836727830941" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RW.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/RW.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RW"
+    type="revolute">
+    <origin
+      xyz="-0.05 0.375 -0.049"
+      rpy="0 0 0" />
+    <parent
+      link="RL3" />
+    <child
+      link="RW" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LL1">
+    <inertial>
+      <origin
+        xyz="0.00665502539857008 9.30593149949608E-08 -0.00893770348086951"
+        rpy="0 0 0" />
+      <mass
+        value="0.197745366203626" />
+      <inertia
+        ixx="0.000179820214231711"
+        ixy="-2.21404459788255E-10"
+        ixz="-9.09821358866229E-06"
+        iyy="0.000174134410918561"
+        iyz="-7.10267966472619E-11"
+        izz="0.000274933877476648" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LL1"
+    type="revolute">
+    <origin
+      xyz="0 0.0405 0"
+      rpy="-1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="LL1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LL2">
+    <inertial>
+      <origin
+        xyz="4.95575583855739E-05 -0.109872337652019 0.00128404434425924"
+        rpy="0 0 0" />
+      <mass
+        value="1.10274171243773" />
+      <inertia
+        ixx="0.0089895168780317"
+        ixy="-2.68055858407527E-07"
+        ixz="-9.00119705759781E-10"
+        iyy="0.000737902806980504"
+        iyz="7.60352327989105E-06"
+        izz="0.00942917954692985" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LL2"
+    type="revolute">
+    <origin
+      xyz="0.088 0 0"
+      rpy="3.1416 1.5708 0" />
+    <parent
+      link="LL1" />
+    <child
+      link="LL2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LL3">
+    <inertial>
+      <origin
+        xyz="-0.0041167267138004 -0.13985422445816 -0.0014019657945796"
+        rpy="0 0 0" />
+      <mass
+        value="1.99975620911228" />
+      <inertia
+        ixx="0.0182776784140512"
+        ixy="-0.0013718486787698"
+        ixz="-8.05925934595668E-05"
+        iyy="0.00176840950422506"
+        iyz="-0.000819916822615236"
+        izz="0.0195219315308137" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LL3"
+    type="revolute">
+    <origin
+      xyz="0 -0.34 0"
+      rpy="0 0 0" />
+    <parent
+      link="LL2" />
+    <child
+      link="LL3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LL4">
+    <inertial>
+      <origin
+        xyz="0.0929013105550837 0.0011915450806762 -0.00757920980130528"
+        rpy="0 0 0" />
+      <mass
+        value="0.303828614403145" />
+      <inertia
+        ixx="5.30258365108837E-05"
+        ixy="-3.18354363342872E-05"
+        ixz="2.80052460249393E-05"
+        iyy="0.000843789594882341"
+        iyz="1.33603557147011E-07"
+        izz="0.000849772665243936" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.92156862745098 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LL4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LL4"
+    type="revolute">
+    <origin
+      xyz="0 -0.292 -0.049"
+      rpy="3.1416 0 0" />
+    <parent
+      link="LL3" />
+    <child
+      link="LL4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="LW">
+    <inertial>
+      <origin
+        xyz="-1.59704256713702E-05 3.58701633527136E-05 -0.005927040589537"
+        rpy="0 0 0" />
+      <mass
+        value="0.702654020626412" />
+      <inertia
+        ixx="0.000924308261318603"
+        ixy="-3.18675270156087E-07"
+        ixz="-2.46060676418633E-07"
+        iyy="0.000924882134322732"
+        iyz="5.52661327846701E-07"
+        izz="0.00171836727830941" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LW.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.92156862745098 0.498039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ReMahruURDF/meshes/LW.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LW"
+    type="revolute">
+    <origin
+      xyz="-0.05 -0.375 -0.049"
+      rpy="3.1416 0 0" />
+    <parent
+      link="LL3" />
+    <child
+      link="LW" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="200"
+      velocity="10" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+</robot>

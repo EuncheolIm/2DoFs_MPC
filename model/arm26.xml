@@ -1,0 +1,73 @@
+<!-- Copyright 2021 DeepMind Technologies Limited
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<mujoco model="2-link arm">
+<compiler angle="radian"/>
+  <option timestep="0.001" iterations="50" solver="Newton" tolerance="1e-10" gravity="0 0 -9.81"/>
+
+  <visual>
+    <rgba haze=".3 .3 .3 1"/>
+  </visual>
+
+  <default>
+    <joint type="hinge" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+  </default>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.6 0.6 0.6" rgb2="0 0 0" width="512" height="512"/>
+    <texture name="texplane" type="2d" builtin="checker" rgb1=".25 .25 .25" rgb2=".3 .3 .3" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+    <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" pos="0 0 -0.5" size="0 0 1" type="plane" material="matplane"/>
+
+    <light directional="true" diffuse=".8 .8 .8" specular=".2 .2 .2" pos="0 0 5" dir="0 0 -1"/>
+    <body name="body0" pos="0 0 .01">
+      <inertial pos="0 0 0" mass="1" diaginertia="0.0002 0.04083 0.04083"/>
+      <geom name="hinge0" type="cylinder" pos=" 0.2 0.0 0.0" size=".011 .011" rgba="0.9 0.4 0.6 1"/>
+      <joint name="joint0"  axis="0 0 1" limited="true" pos="0 0 0"  range="-20 20" type="hinge" frictionloss = "2" damping="1"/>
+      <geom name="link1" type="box" contype="0" conaffinity="0" pos="0.1 0.0 0.0" size="0.1 0.01 0.01" rgba="1.0 1.0 0.0 1"/>
+        <body name="body1" pos="0.2 0 0.0">
+        <inertial pos="0 0 0" mass="1" diaginertia="0.0002 0.04083 0.04083"/>
+        <!-- <site name="hand_site" pos="0 0 0" type="box"  size=".02 .011 .01" rgba="0.9 0.4 1 1"/> -->
+        
+        <geom name="hinge1" type="cylinder" pos=" 0.2 0.0 0.0" size=".011 .011" rgba="0.9 0.4 0.6 1"/>
+        <joint name="joint1" axis="0 0 1" limited="true" pos="0 0 0" range="-20 20" type="hinge" frictionloss = "2" damping="1"/>
+        <geom name="link2" type="box" contype="0" conaffinity="0" pos=" 0.1 0 0.0" size="0.1 0.01 0.01" rgba="1.0 1.0 0.0 1"/>
+          <body name="body2" pos="0.2 0 0.0">
+          <inertial pos="0 0 0" mass="0.5" diaginertia="0.0002 0.01333 0.01333"/>
+          <site name="hand_site" pos="0 0 0" type="box"  size=".02 .011 .01" rgba="0.9 0.4 1 1"/>
+            
+          </body>
+        </body>
+    </body>
+
+  </worldbody>
+
+  <actuator>
+    <!-- <position  name="j1" joint="joint0" kp = "200"/>
+    <position  name="j2" joint="joint1" kp = "200"/> -->
+
+    <motor  name="j1" joint="joint0" />
+    <motor  name="j2" joint="joint1" />
+  </actuator>
+
+  <sensor>
+      <force name = "force_sensor" site="hand_site"/>
+      <torque name = "torque_sensor" site="hand_site"/>
+    </sensor>
+
+</mujoco>

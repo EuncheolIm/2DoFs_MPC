@@ -1,0 +1,260 @@
+<mujoco model="MAHRU_TWL">
+	<compiler angle="radian" coordinate="local" autolimits="true" meshdir="Meshes/"/>
+	
+	<option timestep="0.001" gravity="0 0 -9.81" tolerance="1e-08" cone="elliptic" jacobian="auto" solver="CG" iterations="30" />
+	<size njmax="500" nconmax="100" />
+
+	<visual>
+		<global fovy="45" linewidth="2" glow="0.3"/>
+		<quality shadowsize="2048" numslices="48"/>
+		<map stiffness="50" stiffnessrot="100"/>
+		<scale forcewidth="0.03" contactwidth="0.15" contactheight="0.1" connect="0.1" com="0.05" jointlength="0.25" jointwidth="0.05" 
+					 actuatorlength="0.5" actuatorwidth="0.3" framelength="1" framewidth="0.03"/>
+		<rgba haze="0.6 0.8 0.9 1" force="1 0 0 0.5" com="0 0 1 1"/>
+	</visual>
+
+	<default>
+		<geom contype="1" conaffinity="1" condim="3" material="MatLink"/>
+		<joint limited="false" damping="2" armature="0.1" stiffness="0" frictionloss="0.2"/>
+		<motor gear="1 0 0 0 0 0" ctrllimited="false" ctrlrange="-100 100"/>
+	</default>
+	
+	<asset>
+		<mesh name="base_link" file="base_link.STL" />
+		<mesh name="TOP" file="TOP.STL" />
+		<mesh name="RA1" file="RA1.STL" />
+		<mesh name="RA2" file="RA2.STL" />
+		<mesh name="RA3" file="RA3.STL" />
+		<mesh name="RA4" file="RA4.STL" />
+		<mesh name="LA1" file="LA1.STL" />
+		<mesh name="LA2" file="LA2.STL" />
+		<mesh name="LA3" file="LA3.STL" />
+		<mesh name="LA4" file="LA4.STL" />
+		<mesh name="RL1" file="RL1.STL" />
+		<mesh name="RL2" file="RL2.STL" />
+		<mesh name="RL3" file="RL3.STL" />
+		<mesh name="RL4" file="RL4.STL" />
+		<mesh name="RW" file="RW.STL" />
+		<mesh name="LL1" file="LL1.STL" />
+		<mesh name="LL2" file="LL2.STL" />
+		<mesh name="LL3" file="LL3.STL" />
+		<mesh name="LL4" file="LL4.STL" />
+		<mesh name="LW" file="LW.STL" />
+
+		<texture name="picwheel" type="2d" builtin="none" file="Wheel-01.png"/>
+		<texture name="texplane" type="2d" builtin="checker"  width="512" height="512" mark="edge"
+						 rgb1="0.2 0.3 0.4" rgb2="0.1 0.1 0.2" markrgb="1 1 1"/>
+		
+		<material name="MatGnd"   reflectance="0" specular="1" shininess="1" rgba="0 0.4 0.5 1"/>
+		<material name="MatLink"  reflectance="0.5" specular="1" shininess="0.3" rgba="0.5 0.5 0.5 1"/>
+		<material name="MatPlane" texture="texplane" reflectance='0.05' texrepeat="1 1" texuniform="true"/>
+		<material name="MatWheel" texture="picwheel" emission="0.3" reflectance="0.3" shininess="0.5"/>
+	</asset>
+    
+	<worldbody>
+		<!-- Light-->
+		<light directional="true" pos=" 5 -5 5" dir="-0.5  0.5 -1" diffuse="0.3 0.3 0.3" specular="0.0 0.0 0.0" castshadow="false"/>
+		<light directional="true" pos=" 5  5 5" dir="-0.5 -0.5 -1" diffuse="0.3 0.3 0.3" specular="0.0 0.0 0.0" castshadow="false"/>
+		<light directional="true" pos="-5  5 5" dir=" 0.5 -0.5 -1" diffuse="0.3 0.3 0.3" specular="0.0 0.0 0.0" castshadow="false"/>
+		<light directional="true" pos="-5 -5 5" dir=" 0.5  0.5 -1" diffuse="0.3 0.3 0.3" specular="0.0 0.0 0.0" castshadow="false"/>
+				
+		<!-- Ground -->
+		<geom name="Ground" type="plane" pos="0 0 0" size="0 0 1" material="MatPlane" condim="3"/>
+			
+		<body name="Pelvis" pos="0 0 0.87">
+			<!-- <joint name="Floating_Base" type="free" armature="0"/> -->
+			<inertial pos="-0.00293976 1.32398e-09 -0.0693448" quat="0.707092 0.707092 -0.00461587 0.00461587" 
+								mass="0.663335" diaginertia="0.00122749 0.00115815 0.000481685"/>
+			<geom type="mesh" mesh="base_link" rgba="0.32421875 0.3359375 0.3515625 1"/>
+
+			<body name="UpperBody" pos="0 0 0.35639">
+				<inertial pos="-0.048997 0.00059458 -0.0674766" quat="0.998637 -0.00504995 0.051946 0.000815917" 
+									mass="12.7217" diaginertia="0.0573787 0.0483973 0.0405027"/>
+				<joint name="TOPJ" pos="0 0 0" axis="0 0 1" limited="true" range="-0.5 0.5"/>
+				<geom type="mesh" mesh="TOP" rgba="0.32421875 0.3359375 0.3515625 1"/>
+				<geom type="cylinder" pos="-0.06 0 -0.27" euler="1.57 0 0" size="0.040 0.0921" rgba="0.32421875 0.3359375 0.3515625 1"/>
+				<geom type="box" pos="-0.09 0 -0.22" size="0.01 0.0921 0.05" rgba="0.32421875 0.3359375 0.3515625 1"/>
+				<geom type="box" pos="0.0645 0 -0.235" euler="0 0.455 0" size="0.001 0.0921 0.06" rgba="0.32421875 0.3359375 0.3515625 1"/>
+				<geom type="cylinder" pos="-0.0021 0 -0.1472" euler="1.57 0 0" size="0.1 0.0921" rgba="0.32421875 0.3359375 0.3515625 1"/>
+
+				<!-- Right Arm -->
+				<body name="RA1" pos="0.047556 -0.17703 0" quat="0.706432 0.706435 0.0308435 0.0308433">
+					<joint name="RAJ1" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14"/>
+					<inertial pos="-0.0022174 0.000646182 -0.0905734" quat="0.529029 0.519537 -0.477301 0.471586"
+										mass="0.760413" diaginertia="0.000421496 0.000390053 0.000367509"/>
+					<geom type="mesh" mesh="RA1" rgba="1 0.15625 0 1"/>
+
+					<body name="RA2" pos="0 0 0" quat="-2.59734e-06 0.707105 2.59735e-06 0.707108">
+						<joint name="RAJ2" pos="0 0 0" axis="0 0 1" limited="true" range="-1.57 1.57"/>
+						<inertial pos="0.00839424 0.00457938 -0.00207496" quat="-0.22546 0.649098 0.212913 0.694628"
+											mass="0.595912" diaginertia="0.000417113 0.000286358 0.000213342"/>
+						<geom type="mesh" mesh="RA2" rgba="0.32421875 0.3359375 0.3515625 1"/>
+						
+						<body name="RA3" pos="0.035 0.12115 0.00305" quat="0.499998 -0.5 -0.5 -0.500002">
+							<joint name="RAJ3" pos="0 0 0" axis="0 0 1" limited="true" range="-1 1"/>
+							<inertial pos="-0.000338046 -0.00117373 0.010182" quat="-0.0187317 0.718878 -0.0217545 0.694544"
+												mass="0.919977" diaginertia="0.000460641 0.000415222 0.000384275"/>
+							<geom type="mesh" mesh="RA3" rgba="0.32421875 0.3359375 0.3515625 1"/>
+							
+							<body name="RA4" pos="3e-05 0.0003 0.11885" quat="0.707105 -0.707108 0 0">
+								<joint name="RAJ4" pos="0 0 0" axis="0 0 1" limited="true" range="-0.05 1.7"/>
+								<inertial pos="-2.9077e-05 -0.0332366 0.00190144" quat="0.500583 0.499412 -0.49929 0.500713"
+													mass="0.663638" diaginertia="0.0008007 0.000678786 0.000202803"/>
+								<geom name="RA" type="mesh" mesh="RA4" rgba="0.7 0.7 0.7 1"/>
+								<site name="RArm_EE" pos="0 -0.245 0" size="0.012" type="sphere" rgba="1 0 0 1"/>
+							</body>
+						</body>
+					</body>
+				</body>
+
+				<!-- Left Arm -->
+				<body name="LA1" pos="0.047556 0.17703 0" quat="0.706432 0.706435 -0.0308435 -0.0308433">
+					<joint name="LAJ1" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14"/>
+					<inertial pos="-0.00218056 0.000646182 0.0905734" quat="0.529029 0.519537 -0.477301 0.471586"
+										mass="0.760413" diaginertia="0.000421496 0.000390053 0.000367509" />
+					<geom type="mesh" mesh="LA1" rgba="1 0.15625 0 1"/>
+					
+					<body name="LA2" pos="0 0 0" quat="-2.59734e-06 0.707105 2.59735e-06 0.707108">
+						<joint name="LAJ2" pos="0 0 0" axis="0 0 1" limited="true" range="-1.57 1.57"/>
+						<inertial pos="-0.00839424 0.00464648 -0.00212455" quat="-0.22546 0.649098 0.212913 0.694628"
+											mass="0.595912" diaginertia="0.000417113 0.000286358 0.000213342"/>
+						<geom type="mesh" mesh="LA2" rgba="0.32421875 0.3359375 0.3515625 1"/>
+						
+						<body name="LA3" pos="-0.035 0.12115 0.00305" quat="0.499998 -0.5 -0.5 -0.500002">
+							<joint name="LAJ3" pos="0 0 0" axis="0 0 1" limited="true" range="-1 1"/>
+							<inertial pos="-0.000338047 -0.00117373 0.010182" quat="-0.0187317 0.718878 -0.0217545 0.694544"
+												mass="0.919977" diaginertia="0.000460641 0.000415222 0.000384275"/>
+							<geom type="mesh" mesh="LA3" rgba="0.32421875 0.3359375 0.3515625 1"/>
+							
+							<body name="LA4" pos="3e-05 0.0003 0.11885" quat="0.707105 -0.707108 0 0">
+								<joint name="LAJ4" pos="0 0 0" axis="0 0 1" limited="true" range="-0.05 1.7"/>
+								<inertial pos="-2.9077e-05 -0.0332366 0.00190144" quat="0.500583 0.499412 -0.49929 0.500713" 
+													mass="0.663638" diaginertia="0.0008007 0.000678786 0.000202803" />
+								<geom name="LA" type="mesh" mesh="LA4" rgba="0.7 0.7 0.7 1"/>
+								<site name="LArm_EE" pos="0 -0.245 0" size="0.012" type="sphere" rgba="1 0 0 1"/>
+							</body>
+						</body>
+					</body>
+				</body>
+			</body> <!-- End of TOP -->
+
+			<!-- Right Leg -->
+			<body name="RL1" pos="0 -0.0405 -0.083614" quat="0.499998 -0.5 0.500002 -0.5">
+				<joint name="RLJ1" pos="0 0 0" axis="0 0 1" limited="true" range="-1.57 0.1"/>
+				<inertial pos="0.0277301 -0.240185 0.0201778" quat="0.522838 0.521369 -0.476954 0.476791"
+									mass="1.39472" diaginertia="0.000946984 0.00078212 0.000703348" />
+				<geom type="mesh" mesh="RL1" rgba="0.5 0.5 0.5 1"/>
+				<geom type="cylinder" pos="0 0 -0.0275" size="0.04 0.014" rgba="0.2 0.2 0.2 1"/>
+				<geom type="cylinder" pos="0 0 0.0422" size="0.04 0.003" rgba="0.32421875 0.3359375 0.3515625 1"/>
+				
+				<body name="RL2" pos="0.07925 0 0" quat="2.31078e-07 0.707105 -2.31079e-07 0.707108">
+					<joint name="RLJ2" pos="0 0 0" axis="0 0 1" limited="true" range="-0.5 1.57"/>
+					<inertial pos="0.000106717 -0.0839727 -0.0181511" quat="0.505728 0.506179 -0.494252 0.493698"
+										mass="2.22253" diaginertia="0.0101134 0.00973372 0.00125876"/>
+					<geom type="mesh" mesh="RL2" rgba="0.32421875 0.3359375 0.3515625 1"/>
+					
+					<body name="RL3" pos="0 -0.34 0">
+						<joint name="RLJ3" pos="0 0 0" axis="0 0 1" limited="true" range="-1.7 0"/>
+						<inertial pos="-0.0043099 -0.139813 0.012094" quat="0.534991 0.471054 -0.505093 0.486594"
+											mass="2.32414" diaginertia="0.0195557 0.0184456 0.0016263" />
+						<geom type="mesh" mesh="RL3" rgba="0.32421875 0.3359375 0.3515625 1"/>
+						
+						<body name="RL4" pos="0 -0.292 0.04575" euler="0 0 0">
+							<inertial pos="0.0457249 0.0172073 0.00788433" quat="0.334716 0.637561 -0.325643 0.612729" 
+												mass="0.56011" diaginertia="0.00128601 0.00110098 0.000219687" />
+							<joint name="RLJ4" pos="0 0 0" axis="0 0 1" limited="true" range="-0.1 0.1"/>
+							<geom name="RTW" type="mesh" mesh="RL4" rgba="0.32421875 0.3359375 0.3515625 1"/>
+							<site name="RToe" pos="0.140 -0.138 0.012" size="0.013" type="sphere" rgba="1 0 0 1"/>
+						</body>
+						
+						<body name="RW" pos="-0.05 -0.375 0.05775">
+							<joint name="RWJ" pos="0 0 0" axis="0 0 1"/>
+							<inertial pos="-3.13582e-05 -2.36301e-05 -0.00592704" quat="0.315268 0.632694 -0.315751 0.632934"
+												mass="0.702654" diaginertia="0.00171837 0.000925024 0.000924166"/>
+							<geom name="RW" type="mesh" mesh="RW" rgba="0.828125 0.68359375 0.21484375 1"/>
+							<site name="RWheel_C" pos="0 0 0" size="0.01" type="sphere" rgba="1 0 0 1"/>
+						</body>
+					</body>
+				</body>
+			</body>
+			
+			<!-- Left Leg -->
+			<body name="LL1" pos="0 0.0405 -0.083614" quat="0.499998 -0.5 0.500002 -0.5">
+				<joint name="LLJ1" pos="0 0 0" axis="0 0 1" limited="true" range="-0.1 1.57"/>
+				<inertial pos="-0.00522959 -0.000129003 -0.000532259" quat="0.522838 0.521369 -0.476954 0.476791" 
+									mass="1.39472" diaginertia="0.000946984 0.00078212 0.000703348" />
+				<geom type="mesh" mesh="LL1" rgba="0.5 0.5 0.5 1"/>
+				<geom type="cylinder" pos="0 0 -0.0275" size="0.04 0.014" rgba="0.2 0.2 0.2 1"/>
+				<geom type="cylinder" pos="0 0 0.0422" size="0.04 0.003" rgba="0.32421875 0.3359375 0.3515625 1"/>
+
+				<body name="LL2" pos="-0.07925 0 0" quat="2.31078e-07 0.707105 -2.31079e-07 0.707108">
+					<joint name="LLJ2" pos="0 0 0" axis="0 0 1" limited="true" range="-0.5 1.57"/>
+					<inertial pos="0.000361913 -0.117601 -0.00414202" quat="0.505728 0.506179 -0.494252 0.493698"
+										mass="2.22253" diaginertia="0.0101134 0.00973372 0.00125876"/>
+					<geom type="mesh" mesh="LL2" rgba="0.32421875 0.3359375 0.3515625 1"/>
+					
+					<body name="LL3" pos="0 -0.34 0">
+						<joint name="LLJ3" pos="0 0 0" axis="0 0 1" limited="true" range="-1.7 0"/>
+						<inertial pos="-0.00430926 -0.139813 -0.012094" quat="0.534991 0.471054 -0.505093 0.486594"
+											mass="2.32414" diaginertia="0.0195557 0.0184456 0.0016263" />
+						<geom type="mesh" mesh="LL3" rgba="0.32421875 0.3359375 0.3515625 1"/>
+						
+						<body name="LL4" pos="0 -0.292 -0.04575">
+							<inertial pos="0.0457383 0.0172204 -0.00788433" quat="0.334716 0.637561 -0.325643 0.612729" 
+												mass="0.56011" diaginertia="0.00128601 0.00110098 0.000219687" />
+							<joint name="LLJ4" pos="0 0 0" axis="0 0 1" limited="true" range="-0.1 0.1"/>
+							<geom name="LTW" type="mesh" mesh="LL4" rgba="0.32421875 0.3359375 0.3515625 1"/>
+							<site name="LToe" pos="0.140 -0.138 -0.012" size="0.013" type="sphere" rgba="1 0 0 1"/>
+						</body>
+						
+						<body name="LW" pos="-0.05 -0.375 -0.05775">
+							<inertial pos="-1.59704e-05 -3.58702e-05 0.00592704" quat="0.315268 0.632694 -0.315751 0.632934"
+												mass="0.702654" diaginertia="0.00171837 0.000925024 0.000924166" />
+							<joint name="LWJ" pos="0 0 0" axis="0 0 1"/>
+							<geom name="LW" type="mesh" mesh="LW" rgba="0.828125 0.68359375 0.21484375 1"/>
+							<site name="LWheel_C" pos="0 0 0" size="0.01" type="sphere" rgba="1 0 0 1"/>
+						</body>
+					</body>
+				</body>
+			</body> <!-- End of Left Leg -->
+			
+		</body> <!-- End of Base_Link -->
+	</worldbody>
+
+	<contact>
+		<pair name="GrContact_RA" geom1="Ground" geom2="RA" friction="10 10 1 1 1"/>
+		<pair name="GrContact_LA" geom1="Ground" geom2="LA" friction="10 10 1 1 1"/>
+		
+		<pair name="GrContact_RW" geom1="Ground" geom2="RW" friction="10 10 1 1 1"/>
+		<pair name="GrContact_LW" geom1="Ground" geom2="LW" friction="10 10 1 1 1"/>
+		
+		<pair name="GrContact_RTW" geom1="Ground" geom2="RTW" friction="10 10 1 1 1"/>
+		<pair name="GrContact_LTW" geom1="Ground" geom2="LTW" friction="10 10 1 1 1"/>
+	</contact>
+
+	<actuator>
+		<motor name="TOP" ctrllimited="false" gear="1 0 0 0 0 0" joint="TOPJ"/>
+		
+		<motor name="RA1" ctrllimited="false" gear="1 0 0 0 0 0" joint="RAJ1"/>
+		<motor name="RA2" ctrllimited="false" gear="1 0 0 0 0 0" joint="RAJ2"/>
+		<motor name="RA3" ctrllimited="false" gear="1 0 0 0 0 0" joint="RAJ3"/>
+		<motor name="RA4" ctrllimited="false" gear="1 0 0 0 0 0" joint="RAJ4"/>
+
+		<motor name="LA1" ctrllimited="false" gear="1 0 0 0 0 0" joint="LAJ1"/>
+		<motor name="LA2" ctrllimited="false" gear="1 0 0 0 0 0" joint="LAJ2"/>
+		<motor name="LA3" ctrllimited="false" gear="1 0 0 0 0 0" joint="LAJ3"/>
+		<motor name="LA4" ctrllimited="false" gear="1 0 0 0 0 0" joint="LAJ4"/>
+
+		<motor name="RL1" ctrllimited="false" gear="1 0 0 0 0 0" joint="RLJ1"/>
+		<motor name="RL2" ctrllimited="false" gear="1 0 0 0 0 0" joint="RLJ2"/>
+		<motor name="RL3" ctrllimited="false" gear="1 0 0 0 0 0" joint="RLJ3"/>
+		<motor name="RL4" ctrllimited="false" gear="1 0 0 0 0 0" joint="RLJ4"/>
+		<motor name="RW" ctrllimited="false" gear="1 0 0 0 0 0" joint="RWJ"/>
+
+		<motor name="LL1" ctrllimited="false" gear="1 0 0 0 0 0" joint="LLJ1"/>
+		<motor name="LL2" ctrllimited="false" gear="1 0 0 0 0 0" joint="LLJ2"/>
+		<motor name="LL3" ctrllimited="false" gear="1 0 0 0 0 0" joint="LLJ3"/>
+		<motor name="LL4" ctrllimited="false" gear="1 0 0 0 0 0" joint="LLJ4"/>
+		<motor name="LW" ctrllimited="false" gear="1 0 0 0 0 0" joint="LWJ"/>
+	</actuator>
+</mujoco>

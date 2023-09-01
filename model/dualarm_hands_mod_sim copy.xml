@@ -1,0 +1,9 @@
+<mujoco model="dualarm">
+    <option tolerance="1e-06" collision="predefined" cone="elliptic" jacobian="sparse" solver="CG" iterations="30" />
+    <size njmax="500" nconmax="100" />
+
+    <worldbody>
+        <geom name="base_link" quat="0.707107 0 0 -0.707107" type="cylinder" rgba="0.50196 1 0.50196 1"  />
+        
+    </worldbody>
+</mujoco>

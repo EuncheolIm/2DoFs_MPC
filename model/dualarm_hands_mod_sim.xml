@@ -1,0 +1,167 @@
+<mujoco model="dualarm">
+    <compiler angle="radian" meshdir="meshes/" />
+    <option tolerance="1e-06" collision="predefined" cone="elliptic" jacobian="sparse" solver="CG" iterations="30" />
+    <!-- <option collision ="predefined" cone="elliptic" jacobian="sparse" tolerance="1e-6" iterations="30" solver="CG" timestep="0.002" noslip_iterations="30" noslip_tolerance="1e-5" mpr_iterations="50"> -->
+    <!-- </option> -->
+    <size njmax="8000" nconmax="4000" />
+    <asset>
+        <mesh name="base_link" file="base_link.STL" />
+        <mesh name="body_link" file="body_link.STL" />
+        <mesh name="LShP_Link" file="LShP_Link.STL" />
+        <mesh name="LShR_Link" file="LShR_Link.STL" />
+        <mesh name="LShY_Link" file="LShY_Link.STL" />
+        <mesh name="LElP_Link" file="LElP_Link.STL" />
+        <mesh name="LWrY_Link" file="LWrY_Link.STL" />
+        <mesh name="LWrP_Link" file="LWrP_Link.STL" />
+        <mesh name="LWrR_Link" file="LWrR_Link.STL" />
+        <mesh name="RShP_Link" file="RShP_Link.STL" />
+        <mesh name="RShR_Link" file="RShR_Link.STL" />
+        <mesh name="RShY_Link" file="RShY_Link.STL" />
+        <mesh name="RElP_Link" file="RElP_Link.STL" />
+        <mesh name="RWrY_Link" file="RWrY_Link.STL" />
+        <mesh name="RWrP_Link" file="RWrP_Link.STL" />
+        <mesh name="RWrR_Link" file="RWrR_Link.STL" />
+        <mesh name="base" file="base.stl" scale="0.001 0.001 0.001" />
+        <mesh name="r1" file="r1.stl" scale="0.001 0.001 0.001" />
+        <mesh name="r2" file="r2.stl" scale="0.001 0.001 0.001" />
+        <mesh name="l1" file="l1.stl" scale="0.001 0.001 0.001" />
+        <mesh name="l2" file="l2.stl" scale="0.001 0.001 0.001" />
+        <mesh name="RHandbase_Link" file="RHandbase_Link.STL" />
+        <mesh name="Hand_RT1" file="Hand_RT1.STL" />
+        <mesh name="Hand_RT2" file="Hand_RT2.STL" />
+        <mesh name="Hand_RT3" file="Hand_RT3.STL" />
+        <mesh name="Hand_RT4" file="Hand_RT4.STL" />
+        <mesh name="Hand_RF1J1" file="Hand_RF1J1.STL" />
+        <mesh name="Hand_RF1J2" file="Hand_RF1J2.STL" />
+        <mesh name="Hand_RF1J3" file="Hand_RF1J3.STL" />
+        <mesh name="Hand_RF1J4" file="Hand_RF1J4.STL" />
+        <mesh name="Hand_RF2J1" file="Hand_RF2J1.STL" />
+        <mesh name="Hand_RF2J2" file="Hand_RF2J2.STL" />
+        <mesh name="Hand_RF2J3" file="Hand_RF2J3.STL" />
+        <mesh name="Hand_RF2J4" file="Hand_RF2J4.STL" />
+        <mesh name="Hand_RF3J1" file="Hand_RF3J1.STL" />
+        <mesh name="Hand_RF3J2" file="Hand_RF3J2.STL" />
+        <mesh name="Hand_RF3J3" file="Hand_RF3J3.STL" />
+        <mesh name="Hand_RF3J4" file="Hand_RF3J4.STL" />
+    </asset>
+
+     <asset>
+        <texture type="skybox" builtin="gradient" width="128" height="128" rgb1=".4 .6 .8" rgb2="0 0 0"/> 
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="128" height="128" 
+            rgb1="0.6 0.6 0.6" rgb2="0.6 0.6 0.6" markrgb="1 1 1"/>  
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".4 .4 .4" rgb2=".6 .6 .6" 
+            width="512" height="512"/>  
+        <material name='MatPlane' reflectance='0.3' texture="texplane" texrepeat="1 1" texuniform="true"/>
+    </asset>
+
+     <visual>
+        <quality shadowsize="2048" offsamples="16"/>
+        <map znear="0.1" force="0.05"/>
+    </visual>
+
+    <statistic extent="4"/>
+
+    <worldbody>
+        <light directional="true" diffuse=".8 .8 .8" pos="0 0 10" dir="0 0 -10"/>
+        <geom name="ground" pos="0 0 0" type="plane" size="10 10 .05" rgba=".7 .7 .7 1" material="MatPlane"/>
+
+        <geom name="base_link" quat="0.707107 0 0 -0.707107" type="mesh" rgba="0.50196 1 0.50196 1" mesh="base_link" />
+        <body name="body_link" pos="0.1598 0 0.615" quat="0.707107 0.707107 0 0">
+            <inertial pos="0.070879 0.38092 3.2435e-05" quat="0.999702 0.0241074 -0.0011948 0.0035823" mass="5.9559" diaginertia="0.0175723 0.0128361 0.0126716" />
+            <joint name="j0" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="-0.3 0.3" damping="5" frictionloss="5"  />
+            <geom name="body_link" type="mesh" rgba="0.89804 0.91765 0.92941 1" mesh="body_link" />
+            <body name="LShP_Link" pos="0.0762 0.3943 -0.121">
+                <inertial pos="-0.013031 -8.3122e-05 -0.078324" quat="0.5 0.5 -0.5 0.5" mass="2.0773" diaginertia="1.17744 1.17744 1.17744" />
+                <joint name="j1" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                <geom name="LShP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LShP_Link" />
+                <body name="LShR_Link" pos="0.023 0 -0.089">
+                    <inertial pos="-0.020572 -0.12696 2.6805e-05" quat="1 0 0 -1.24725e-05" mass="1.9866" diaginertia="1.1772 1.1772 1.1772" />
+                    <joint name="j2" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                    <geom name="LShR_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LShR_Link" />
+                    <body name="LShY_Link" pos="-0.023 -0.1595 0">
+                        <inertial pos="-1.906e-06 -0.11912 -0.006149" quat="0.499999 0.500001 0.499999 0.500001" mass="1.8888" diaginertia="0.83085 0.83085 0.83085" />
+                        <joint name="j3" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                        <geom name="LShY_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LShY_Link" />
+                        <body name="LElP_Link" pos="0 -0.1305 0.004">
+                            <inertial pos="-9.5593e-05 -0.10373 -0.0011155" quat="-0.0014133 0.707105 0.00139785 0.707105" mass="1.1558" diaginertia="0.830148 0.830148 0.830148" />
+                            <joint name="j4" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                            <geom name="LElP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="LElP_Link" />
+                            <body name="LWrY_Link" pos="0 -0.12411 -0.004">
+                                <inertial pos="-4.2008e-05 -0.092156 -0.003711" quat="0.5 0.5 0.5 0.5" mass="1.3048" diaginertia="0.461587 0.461587 0.461587" />
+                                <joint name="j5" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                                <geom name="LWrY_Link" type="mesh" rgba="0.89804 0.89804 0.89804 1" mesh="LWrY_Link" />
+                                <body name="LWrP_Link" pos="0 -0.16589 -0.042">
+                                    <inertial pos="0.0032734 -0.00018748 0.041704" quat="0.499518 0.500481 -0.499518 0.500481" mass="1.0771" diaginertia="0.461324 0.461324 0.461324" />
+                                    <joint name="j6" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                                    <geom name="LWrP_Link" type="mesh" rgba="1 0.94902 0.9098 1" mesh="LWrP_Link" />
+                                    <body name="LWrR_Link" pos="0.0177 0 0.042">
+                                        <inertial pos="-0.00647293 -0.0900972 -4.57472e-07" quat="0.585687 0.396199 -0.58568 0.396203" mass="0.69256" diaginertia="5.46308 5.4627 5.46151" />
+                                        <joint name="j7" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                                        <geom name="LWrR_Link" type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="LWrR_Link" />
+                                        <geom name="hand_base" pos="-0.0177 -0.080748 0" quat="0.499998 0.5 0.5 -0.500002" type="mesh" mesh="base" />
+                                        <geom name="hand_r1" pos="-0.00970018 -0.128748 -2.9385e-08" quat="0.499998 0.5 0.5 -0.500002" type="mesh" mesh="r1" />
+                                        <geom name="hand_r2" pos="0.0396631 -0.157248 -2.10707e-07" quat="0.499998 0.5 0.5 -0.500002" type="mesh" mesh="r2" />
+                                        <geom name="hand_l1" pos="-0.0257002 -0.128748 2.93863e-08" quat="0.499998 0.5 0.5 -0.500002" type="mesh" mesh="l1" />
+                                        <geom name="hand_l2" pos="-0.0750637 -0.157248 2.10709e-07" quat="0.499998 0.5 0.5 -0.500002" type="mesh" mesh="l2" />
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+            <body name="RShP_Link" pos="0.0762 0.3943 0.121">
+                <inertial pos="-0.013031 -8.2555e-05 0.078324" quat="0.5 0.5 -0.5 0.5" mass="2.0773" diaginertia="1.17744 1.17744 1.17744" />
+                <joint name="j8" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                <geom name="RShP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RShP_Link" />
+                <body name="RShR_Link" pos="0.023 0 0.089">
+                    <inertial pos="-0.020572 -0.12696 -2.6614e-05" quat="1 0 0 -1.24725e-05" mass="1.9866" diaginertia="1.1772 1.1772 1.1772" />
+                    <joint name="j9" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                    <geom name="RShR_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RShR_Link" />
+                    <body name="RShY_Link" pos="-0.023 -0.1595 0">
+                        <inertial pos="-1.1816e-06 -0.11912 0.006149" quat="0.500001 0.499999 0.500001 0.499999" mass="1.8888" diaginertia="0.83085 0.83085 0.83085" />
+                        <joint name="j10" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                        <geom name="RShY_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RShY_Link" />
+                        <body name="RElP_Link" pos="0 -0.1305 -0.004">
+                            <inertial pos="-0.00011214 -0.10373 0.0010998" quat="-0.00229816 0.707103 0.00231357 0.707103" mass="1.1558" diaginertia="0.830148 0.830148 0.830148" />
+                            <joint name="j11" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                            <geom name="RElP_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RElP_Link" />
+                            <body name="RWrY_Link" pos="0 -0.12411 0.004">
+                                <inertial pos="-5.7522e-05 -0.092145 0.0037353" quat="0.5 0.5 0.5 0.5" mass="1.3048" diaginertia="0.461587 0.461587 0.461587" />
+                                <joint name="j12" pos="0 0 0" axis="0 -1 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                                <geom name="RWrY_Link" type="mesh" rgba="0.66667 0.63922 0.61961 1" mesh="RWrY_Link" />
+                                <body name="RWrP_Link" pos="0 -0.16589 0.042">
+                                    <inertial pos="0.0022235 -0.00018748 -0.041704" quat="0.499518 0.500482 -0.499518 0.500482" mass="1.0771" diaginertia="0.461324 0.461324 0.461324" />
+                                    <joint name="j13" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                                    <geom name="RWrP_Link" type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="RWrP_Link" />
+                                    <body name="RWrR_Link" pos="0.0177 0 -0.042">
+                                        <inertial pos="-0.000663631 -0.12247 -0.00135733" quat="0.520195 0.45437 -0.556235 0.462113" mass="0.684331" diaginertia="0.466442 0.466006 0.461597" />
+                                        <joint name="j14" pos="0 0 0" axis="1 0 0" limited="true" range="-3.14 3.14" damping="5" frictionloss="5"  />
+                                        <geom name="RWrR_Link" type="mesh" rgba="0.64706 0.61961 0.58824 1" mesh="RWrR_Link" />
+                                        <geom name="RHandbase_Link" pos="-0.0177 -0.080748 0" quat="0.499998 -0.5 -0.5 -0.500002" type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="RHandbase_Link" />
+                                        <geom name="Hand_RT1" pos="-0.00675519 -0.125469 0.00632504" quat="0.521338 0.477708 0.52134 -0.477709" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RT1" />
+                                        <geom name="Hand_RT2" pos="0.0371769 -0.121624 0.00627488" quat="-0.706437 -0.0308502 0.70643 -0.0308503" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RT2" />
+                                        <geom name="Hand_RT3" pos="0.0371769 -0.121624 0.00627488" quat="-0.706432 0.706435 0.0308451 -0.0308528" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RT3" />
+                                        <geom name="Hand_RT4" pos="0.0771831 -0.118801 0.00627444" quat="-0.706432 0.706435 0.0308451 -0.0308528" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RT4" />
+                                        <geom name="Hand_RF1J1" pos="0.0154676 -0.195898 -0.00632488" quat="0.499998 0.5 -0.5 0.500002" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF1J1" />
+                                        <geom name="Hand_RF1J2" pos="0.0149695 -0.195942 -0.00632488" quat="-0.521344 0.52134 -0.477704 0.477707" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF1J2" />
+                                        <geom name="Hand_RF1J3" pos="0.0183413 -0.2359 -0.00632488" quat="-0.521344 0.52134 -0.477704 0.477707" type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Hand_RF1J3" />
+                                        <geom name="Hand_RF1J4" pos="0.0209115 -0.26584 -0.00632488" quat="-0.521344 0.52134 -0.477704 0.477707" type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Hand_RF1J4" />
+                                        <geom name="Hand_RF2J1" pos="-0.0177004 -0.197348 -0.006325" quat="0.499998 0.5 -0.5 0.500002" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF2J1" />
+                                        <geom name="Hand_RF2J2" pos="-0.0182004 -0.197348 -0.006325" quat="-0.500004 0.499998 -0.499998 0.5" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF2J2" />
+                                        <geom name="Hand_RF2J3" pos="-0.0183253 -0.237448 -0.00632515" quat="-0.500004 0.499998 -0.499998 0.5" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF2J3" />
+                                        <geom name="Hand_RF2J4" pos="-0.0183751 -0.267498 -0.00632526" quat="-0.500004 0.499998 -0.499998 0.5" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF2J4" />
+                                        <geom name="Hand_RF3J1" pos="-0.0508684 -0.195898 -0.00632512" quat="0.499998 0.5 -0.5 0.500002" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF3J1" />
+                                        <geom name="Hand_RF3J2" pos="-0.0513665 -0.195854 -0.00632512" quat="-0.47771 0.477706 -0.521338 0.521342" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF3J2" />
+                                        <geom name="Hand_RF3J3" pos="-0.054987 -0.235791 -0.00632515" quat="-0.47771 0.477706 -0.521338 0.521342" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF3J3" />
+                                        <geom name="Hand_RF3J4" pos="-0.0576566 -0.265722 -0.00632517" quat="-0.47771 0.477706 -0.521338 0.521342" type="mesh" rgba="0.752941 0.752941 0.752941 1" mesh="Hand_RF3J4" />
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>
