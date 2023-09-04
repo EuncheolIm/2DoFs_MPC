@@ -1067,8 +1067,8 @@ CMakeFiles/sm.dir/src/quadraticprogram.cc.o
  /home/kist/euncheol/2DoFs_MPC/libraries/qpOASES/include/qpOASES/extras/SolutionAnalysis.hpp
  /home/kist/euncheol/2DoFs_MPC/libraries/qpOASES/include/qpOASES/extras/SolutionAnalysis.ipp
 
-CMakeFiles/sm.dir/src/test.cpp.o
- /home/kist/euncheol/2DoFs_MPC/src/test.cpp
+CMakeFiles/sm.dir/src/test_dynamics.cpp.o
+ /home/kist/euncheol/2DoFs_MPC/src/test_dynamics.cpp
  /usr/include/stdc-predef.h
  /home/kist/euncheol/2DoFs_MPC/include/test.h
  /usr/include/c++/9/iostream

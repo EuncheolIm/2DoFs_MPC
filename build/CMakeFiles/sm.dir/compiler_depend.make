@@ -1065,7 +1065,7 @@ CMakeFiles/sm.dir/src/quadraticprogram.cc.o: /home/kist/euncheol/2DoFs_MPC/src/q
   /home/kist/euncheol/2DoFs_MPC/libraries/qpOASES/include/qpOASES/extras/SolutionAnalysis.hpp \
   /home/kist/euncheol/2DoFs_MPC/libraries/qpOASES/include/qpOASES/extras/SolutionAnalysis.ipp
 
-CMakeFiles/sm.dir/src/test.cpp.o: /home/kist/euncheol/2DoFs_MPC/src/test.cpp \
+CMakeFiles/sm.dir/src/test_dynamics.cpp.o: /home/kist/euncheol/2DoFs_MPC/src/test_dynamics.cpp \
   /usr/include/stdc-predef.h \
   /home/kist/euncheol/2DoFs_MPC/include/test.h \
   /usr/include/c++/9/iostream \
@@ -1841,6 +1841,8 @@ CMakeFiles/sm.dir/src/test.cpp.o: /home/kist/euncheol/2DoFs_MPC/src/test.cpp \
 
 /usr/include/c++/9/bits/refwrap.h:
 
+/home/kist/euncheol/2DoFs_MPC/src/test_dynamics.cpp:
+
 /usr/local/include/eigen3/Eigen/src/Core/VectorwiseOp.h:
 
 /usr/include/c++/9/bits/ostream_insert.h:
@@ -2372,8 +2374,6 @@ _deps/glfw3-src/include/GLFW/glfw3.h:
 /usr/lib/gcc/x86_64-linux-gnu/9/include/emmintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/9/include/xmmintrin.h:
-
-/home/kist/euncheol/2DoFs_MPC/src/test.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 

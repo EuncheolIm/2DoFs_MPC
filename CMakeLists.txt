@@ -4,10 +4,6 @@ project(sm)
 set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_CXX_FLAGS} -Wl,-no-as-needed")
-#fing eigen library
-# find_package (Eigen3 3.3.7 REQUIRED)
-# message(STATUS "Eigen3 : " ${EIGEN3_INCLUDE_DIR}/Eigen)
-# message(STATUS "current : " ${CMAKE_CURRENT_SOURCE_DIR})
 
 option(MUJOCO_BUILD_EXAMPLES "Build samples for MuJoCo" OFF)
 option(MUJOCO_BUILD_SIMULATE "Build simulate library for MuJoCo" ON)
@@ -53,7 +49,7 @@ if(MUJOCO_HARDEN)
 endif()
 
 # Custom Starts from here
-find_package(Eigen3 REQUIRED)
+find_package(Eigen3 REQUIRED) # Find Eigen3 Library
 
 include_directories(
     include
@@ -66,7 +62,7 @@ include_directories(
 add_executable(${PROJECT_NAME} 
     src/main.cc
     # src/test_goal_Cd.cpp
-    src/test.cpp
+    src/test_dynamics.cpp
     src/quadraticprogram.cc
     ${SIMULATE_RESOURCE_FILES}
     ${RBDL_SOURCES}

@@ -51,12 +51,12 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 {	
 	// cal_dynamics(X_pred.segment(0,2), X_pred.segment(2,2));
 	cal_dynamics(_q, _qdot);
-	A_d.block<2,2>(0,0) = _Id_2;	A_d.block<2,2>(0,2) = dT * _Id_2;
+	A_d.block<2,2>(0,0) = _Id_2;	A_d.block<2,2>(0,2) = dT*_Id_2;
 									A_d.block<2,2>(2,2) = _Id_2;
-	B_d.block<2,2>(2,0) = dT  * _Id_2;
-	// B_d.block<2,2>(2,0) = dT * M.inverse() * _Id_2;
+	// B_d.block<2,2>(2,0) = dT*_Id_2;
+	B_d.block<2,2>(2,0) = dT*M.inverse();
 
-	D_d.segment(2,2) = -1 * dT * M.inverse() * (C + G);
+	D_d.segment(2,2) = -dT*M.inverse()*(C + G);
 
 	F.block<4,4>(0,0) = A_d;
 	for (int i = 1; i <Np; i++){
@@ -67,11 +67,10 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 		temp_Phi.block<4,4>(4*i,0) = temp_Phi.block<4,4>(4*(i-1),0) * A_d; // 4x4
 	}
 	temp_Phi_B = temp_Phi * B_d;
-
 	for (int i = 0; i <Np; i++){
 		for (int j = 0; j <Np; j++){
 			if( j<=i){
-				Phi.block<4,2>(4*i,2*j) = temp_Phi_B.block<4,2>(2*(i-j),0);
+				Phi.block<4,2>(4*i,2*j) = temp_Phi_B.block<4,2>(4*(i-j),0);
 			}
 		}
 	}
@@ -88,56 +87,68 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 		X.segment(2,2) = _qdot;
 		boolll = false;
 	}
-
-	_H.setZero();
+	// X.segment(0,2) = _q;
+	// X.segment(2,2) = _qdot;
+	QP.InitializeProblemSize(Np*_dof, Np*_dof);
+	_H.setZero(Np * _dof,Np * _dof);
 	// _H.noalias() = Phi.transpose() * Q.transpose() * Q * Phi + R.transpose()*R; // Nc x Nc
-	// _H.noalias() = Q * Phi.transpose() * Phi + R; // Nc x Nc
-	_H.noalias() = Phi.transpose()* Q * Phi + R; // Nc x Nc
+	_H.noalias() = Phi.transpose()*Q*Phi;// + R; // Nc x Nc
 
-	_g.setZero();
+	_g.setZero(Np*_dof);
 	// _g = -2*Phi.transpose() * Q.transpose() * Q *(Y_ref - F * X - Phi * U_old - temp_V );
-	// _g = 2* Phi.transpose() * Q * (F * X + temp_V - Y_ref); // Nc x Nc
-	_g = 2* Phi.transpose() * Q * (F * X +Phi*U_old - Y_ref); // Nc x Nc
+	_g = 2* Phi.transpose() * Q * (F * X + Phi*U_old + temp_V - Y_ref); // Nc x Nc
+	// _g = 2* Phi.transpose() * Q * (F*X + Phi*U_old - Y_ref); // Nc x Nc
 
 	QP.UpdateMinProblem(_H,_g);
-	
-	_Id_A.setIdentity(QP._num_cons, QP._num_var);
-	_A = _Id_A;
-	_min_constraint = CustomMath::pseudoInverseQR(Phi)*(_q_min_constraint - (F*X)) - U_old;
-	_max_constraint = CustomMath::pseudoInverseQR(Phi)*(_q_max_constraint - (F*X)) - U_old;
-	// _max_constraint = (CustomMath::pseudoInverseQR(Phi) * (Y_ref - F*X - V));
-	for(int i = 0; i < Np*_dof; i++){
-		_lbA(i) = _min_constraint(i);
-		_ubA(i) = _max_constraint(i);
-		// _lbA(i) = _max_constraint(i) - 0.0000001;
-		// _ubA(i) = _max_constraint(i) + 0.0000001;
+	threshold = 0.0001;
+	for(int i=0; i<Np; i++){
+		_A.block<2,2>(2*i,2*i) = _Id_2;
+	}
+	_max_constraint = (CustomMath::pseudoInverseQR(Phi) * (Y_ref - F*X - temp_V) - U_old);
+	for (int i = 0; i < Np*_dof; i++)
+	{
+		_lbA(i) = _max_constraint(i) - threshold; 
+		_ubA(i) = _max_constraint(i) + threshold;
 	}
 	QP.UpdateSubjectToAx(_A, _lbA, _ubA); // equality constraint update to QP
-	for (int i = 0; i < Np*_dof; i++){
-		_lb(i) = - 20.0;
-		_ub(i) = 20.0;
-	}
-	QP.UpdateSubjectToX(_lb, _ub);
+	// _Id_A.setIdentity(QP._num_cons, QP._num_var);
+	// _A = _Id_A;
+	// _min_constraint = CustomMath::pseudoInverseQR(Phi)*(_q_min_constraint - (F*X)) - U_old;
+	// _max_constraint = CustomMath::pseudoInverseQR(Phi)*(_q_max_constraint - (F*X)) - U_old;
+	// // _max_constraint = (CustomMath::pseudoInverseQR(Phi) * (Y_ref - F*X - V));
+	// for(int i = 0; i < Np*_dof; i++){
+	// 	_lbA(i) = _min_constraint(i);
+	// 	_ubA(i) = _max_constraint(i);
+	// 	// _lbA(i) = _max_constraint(i) - 0.0000001;
+	// 	// _ubA(i) = _max_constraint(i) + 0.0000001;
+	// }
+	// QP.UpdateSubjectToAx(_A, _lbA, _ubA); // equality constraint update to QP
+	// for (int i = 0; i < Np*_dof; i++){
+	// 	_lb(i) = -20.0;
+	// 	_ub(i) = 20.0;
+	// }
+	// QP.UpdateSubjectToX(_lb, _ub);
 	QP.EnableEqualityCondition(0.0001);
 	QP.SolveQPoases(max_iter);
 	_opt_u = QP._Xopt;
 
 	U = U_old + _opt_u;
 	del_v = U.segment(0,2);
-	// cout << "u : "<< del_v.transpose()<<endl;
-	// X_pred = A_d * X + B_d * del_v;// + D_d;
-	X_pred = A_d * X + B_d * del_v ;
+	cout << "u : "<< del_v.transpose()<<endl;
+	X_pred = A_d * X + B_d * del_v + D_d;
 
+	X = X_pred; 
+
+	cout << "x : "<<X_pred(1)<<" "<<_q(1)<<endl;
 	for (int i=0; i<Np; i++){
 		U_old.segment(2 * i,2) = del_v;
 	}
-	X = X_pred; 
 
 	return X;
 }
 void Test_controller::control()
 {	
-	cout << "_q(0)*DEG2RAD == Y_stack(0) : "<<_q(1)<<" "<<Y_stack(1)<< " "<<abs(_q(1) - Y_stack(1))<<endl;
+	// cout << "_q(0)*DEG2RAD == Y_stack(0) : "<<_q(1)<<" "<<Y_stack(1)<< " "<<abs(_q(1) - Y_stack(1))<<endl;
 	if(abs(_q(0) - Y_stack(0)) <= 0.0001 || abs(_q(1) - Y_stack(1)) <= 0.0001){
 		iter += 1;
 		if(iter == 1)
@@ -174,13 +185,14 @@ void Test_controller::control()
 	
 	_torque = _kp*(x1.segment(0,2) - _q) + _kd*(x1.segment(2,2) - _qdot);
 
-	// for (int i=0; i< 2; i++){
-	// 	log(i) = x1(i);
-	// 	log(i+2) = _q(i);
-	// }
-	// fout.open("/home/kist/euncheol/Dual-arm/data/Sim_data/mpc_q_qdot1.txt",ios::app);
-	// fout << log.transpose() <<endl;
-	// fout.close();
+	for (int i=0; i< 2; i++){
+		log(i) = x1(i);
+		log(i+2) = _q(i);
+		log(i+4) = Y_stack(i);
+	}
+	fout.open("/home/kist/euncheol/Dual-arm/data/Sim_data/2dof_mpc.txt",ios::app);
+	fout << log.transpose() <<endl;
+	fout.close();
 
 	
 }
@@ -282,6 +294,7 @@ VectorXd Test_controller::cal_nextX(VectorXd ddx, VectorXd dx2, VectorXd x2, dou
 }
 void Test_controller::Initialize()
 {	
+	std::remove("/home/kist/euncheol/Dual-arm/data/Sim_data/2dof_mpc.txt");
 	iter = 0;
 	_bool_init = true;
 	_q.setZero(_dof);
@@ -361,10 +374,10 @@ void Test_controller::InitializeMPC()
 	Q.setZero(_dof*2*Np, _dof*2*Np);
 	R.setZero(_dof*Np, _dof*Np);
 
-	for(int i=0; i<_dof*2*Np; i++){
-		Q(i,i) = 500;
+	for(int i=0; i<_dof*Np; i++){
+		Q(i,i) = 800;
+		Q(i+_dof,i+_dof) = 80000;
 	}
-
 	for(int i=0; i<_dof*Np; i++){
 		R(i,i) = 0.1;
 	}

@@ -27,10 +27,8 @@ void Test_controller::read(double t, double* q, double* qdot, double* sensordata
 		_init_t = _t;
 		_bool_init = false;
 	}
-
 	_dt = t - _pre_t;
 	_pre_t = t;
-
 	for (int i = 0; i < _dof; i++)
 	{
 		_q(i) = q[i];
@@ -54,9 +52,8 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 	A_d.block<2,2>(0,0) = _Id_2;	A_d.block<2,2>(0,2) = dT * _Id_2;
 									A_d.block<2,2>(2,2) = _Id_2;
 
-	B_d.block<2,2>(2,0) = dT * M.inverse() * _Id_2;
+	B_d.block<2,2>(2,0) = dT * _Id_2;
 
-	D_d.segment(2,2) = -1 * dT * M.inverse() * (C + G);
 	F.block<4,4>(0,0) = A_d;
 	for (int i = 1; i <Np; i++){
 		F.block<4,4>(4*i,0) = F.block<4,4>(4*(i-1),0) * A_d;
@@ -76,10 +73,7 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 			}
 		}
 	}
-	temp_V.segment(0,4) = D_d;
-	for (int i = 1; i <Np; i++){
-		temp_V.segment(4*i,4) = A_d * temp_V.segment(4*(i-1),4) + D_d; // 4x1
-	}
+
 	max_iter = 1000;
 	QP.InitializeProblemSize(Np*_dof, Np*_dof);//Np*_dofj)
 	_H.setZero(QP._num_var, QP._num_var);
@@ -99,7 +93,7 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 		boolll = false;
 	}
 	_H.noalias() = Phi.transpose()*Q*Phi;// + R; // Nc x Nc
-	_g = 2*Phi.transpose()*Q*(F*X + Phi*U_old+ temp_V - Y_ref); // Nc x Nc
+	_g = 2*Phi.transpose()*Q*(F*X + Phi*U_old - Y_ref); // Nc x Nc
 	QP.UpdateMinProblem(_H,_g);
 
 	_A = _Id_A;

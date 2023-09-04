@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/sm.dir/src/main.cc.o.d"
   "CMakeFiles/sm.dir/src/quadraticprogram.cc.o"
   "CMakeFiles/sm.dir/src/quadraticprogram.cc.o.d"
-  "CMakeFiles/sm.dir/src/test.cpp.o"
-  "CMakeFiles/sm.dir/src/test.cpp.o.d"
+  "CMakeFiles/sm.dir/src/test_dynamics.cpp.o"
+  "CMakeFiles/sm.dir/src/test_dynamics.cpp.o.d"
   "bin/sm"
   "bin/sm.pdb"
 )
