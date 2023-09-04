@@ -2,7 +2,7 @@
 #define QUADRATICPROGRAM_H
 
 #include <iostream>
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 #include "qpOASES.hpp"
 
 #define useDynamicMemoryAllocation

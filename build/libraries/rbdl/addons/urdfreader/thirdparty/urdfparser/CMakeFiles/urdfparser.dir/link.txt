@@ -1,0 +1,2 @@
+/usr/bin/ar qc liburdfparser.a CMakeFiles/urdfparser.dir/src/common.cpp.o CMakeFiles/urdfparser.dir/src/joint.cpp.o CMakeFiles/urdfparser.dir/src/geometry.cpp.o CMakeFiles/urdfparser.dir/src/link.cpp.o CMakeFiles/urdfparser.dir/src/model.cpp.o CMakeFiles/urdfparser.dir/src/tinyxml.cpp.o CMakeFiles/urdfparser.dir/src/tinyxmlerror.cpp.o CMakeFiles/urdfparser.dir/src/tinyxmlparser.cpp.o
+/usr/bin/ranlib liburdfparser.a

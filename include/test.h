@@ -3,13 +3,11 @@
 #define __TEST_H
 
 #include <iostream>
-#include <eigen3/Eigen/Dense>
+#include <Eigen/Dense>
 #include <rbdl/rbdl.h>
 #include <rbdl/addons/urdfreader/urdfreader.h>
 #include <fstream>
 
-#include "trajectory.h"
-#include "robotmodel.h"
 #include "custommath.h"
 #include "quadraticprogram.h"
 

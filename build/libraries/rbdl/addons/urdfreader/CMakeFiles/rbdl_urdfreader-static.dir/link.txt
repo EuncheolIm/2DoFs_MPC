@@ -1,0 +1,2 @@
+/usr/bin/ar qc librbdl_urdfreader.a "CMakeFiles/rbdl_urdfreader-static.dir/urdfreader.cc.o"
+/usr/bin/ranlib librbdl_urdfreader.a

@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <experimental/filesystem>
+
 
 Test_controller::Test_controller(int JDOF)
 {
@@ -49,14 +49,14 @@ void Test_controller::write(double* torque) // torque
 }
 VectorXd Test_controller::MPC(VectorXd Y_ref)
 {	
-	cal_dynamics(X_pred.segment(0,2), X_pred.segment(2,2));
-	A_d.block<2,2>(0,0) = _Id_2;
-	A_d.block<2,2>(0,2) = dT * _Id_2;
-	A_d.block<2,2>(2,2) = _Id_2;
+	// cal_dynamics(X_pred.segment(0,2), X_pred.segment(2,2));
+	cal_dynamics(_q, _qdot);
+	A_d.block<2,2>(0,0) = _Id_2;	A_d.block<2,2>(0,2) = dT * _Id_2;
+									A_d.block<2,2>(2,2) = _Id_2;
+	B_d.block<2,2>(2,0) = dT  * _Id_2;
+	// B_d.block<2,2>(2,0) = dT * M.inverse() * _Id_2;
 
-	B_d.block<2,2>(2,0) = dT * _Id_2;
-
-	// D_d.segment(2,2) = -1 * dT * M.inverse() * (C + G);
+	D_d.segment(2,2) = -1 * dT * M.inverse() * (C + G);
 
 	F.block<4,4>(0,0) = A_d;
 	for (int i = 1; i <Np; i++){
@@ -97,9 +97,22 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 	_g.setZero();
 	// _g = -2*Phi.transpose() * Q.transpose() * Q *(Y_ref - F * X - Phi * U_old - temp_V );
 	// _g = 2* Phi.transpose() * Q * (F * X + temp_V - Y_ref); // Nc x Nc
-	_g = 2* Phi.transpose() * Q * (F * X +Phi*U_old- Y_ref); // Nc x Nc
+	_g = 2* Phi.transpose() * Q * (F * X +Phi*U_old - Y_ref); // Nc x Nc
 
 	QP.UpdateMinProblem(_H,_g);
+	
+	_Id_A.setIdentity(QP._num_cons, QP._num_var);
+	_A = _Id_A;
+	_min_constraint = CustomMath::pseudoInverseQR(Phi)*(_q_min_constraint - (F*X)) - U_old;
+	_max_constraint = CustomMath::pseudoInverseQR(Phi)*(_q_max_constraint - (F*X)) - U_old;
+	// _max_constraint = (CustomMath::pseudoInverseQR(Phi) * (Y_ref - F*X - V));
+	for(int i = 0; i < Np*_dof; i++){
+		_lbA(i) = _min_constraint(i);
+		_ubA(i) = _max_constraint(i);
+		// _lbA(i) = _max_constraint(i) - 0.0000001;
+		// _ubA(i) = _max_constraint(i) + 0.0000001;
+	}
+	QP.UpdateSubjectToAx(_A, _lbA, _ubA); // equality constraint update to QP
 	for (int i = 0; i < Np*_dof; i++){
 		_lb(i) = - 20.0;
 		_ub(i) = 20.0;
@@ -110,12 +123,10 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 	_opt_u = QP._Xopt;
 
 	U = U_old + _opt_u;
-
-	// // cout << " _opt_u : "<<_opt_u.transpose() << endl;
-	// del_v = _opt_u.segment(0,2);
 	del_v = U.segment(0,2);
 	// cout << "u : "<< del_v.transpose()<<endl;
-	X_pred = A_d * X + B_d * del_v;// + D_d;
+	// X_pred = A_d * X + B_d * del_v;// + D_d;
+	X_pred = A_d * X + B_d * del_v ;
 
 	for (int i=0; i<Np; i++){
 		U_old.segment(2 * i,2) = del_v;
@@ -126,11 +137,8 @@ VectorXd Test_controller::MPC(VectorXd Y_ref)
 }
 void Test_controller::control()
 {	
-	// cout << "_q : "<<(_q(0)*RAD2DEG) << " // _prev_q: " <<(_prev_q(0)*RAD2DEG) <<endl;
-	// if (check(_q, _prev_q) == 1){
-	if((_q(0) - _prev_q(0))*RAD2DEG == 0.0 || (_q(1) - _prev_q(1))*RAD2DEG == 0.0){
-		cout << "adasdasdasd"<<endl;
-		cout << "_q : "<<(_q(0)*RAD2DEG) << " // _prev_q: " <<(_prev_q(0)*RAD2DEG) <<endl;
+	cout << "_q(0)*DEG2RAD == Y_stack(0) : "<<_q(1)<<" "<<Y_stack(1)<< " "<<abs(_q(1) - Y_stack(1))<<endl;
+	if(abs(_q(0) - Y_stack(0)) <= 0.0001 || abs(_q(1) - Y_stack(1)) <= 0.0001){
 		iter += 1;
 		if(iter == 1)
 		{
@@ -154,19 +162,17 @@ void Test_controller::control()
 		}
 		cout << "iter : "<<iter <<endl;
 	}
-	_prev_q = _q;
 	for (int i = 0; i < Np; i++){
 		Y_ref.segment(i*2*_dof, 4) = Y_stack;
 	}
 	x1 = MPC(Y_ref);
 	// cout << "x1 : "<< (x1*RAD2DEG).transpose()<<endl<<endl;
-	// cout << "_q : "<<(_q*RAD2DEG).transpose() << " // _prev_q: " <<(_prev_q*RAD2DEG).transpose() <<endl;
 	// _torque = x1.segment(0,2);
 	
 	_kp.diagonal() << 900,900;
 	_kd.diagonal() << 0.08,0.08;
 	
-	// _torque = _kp*(x1.segment(0,2) - _q) + _kd*(x1.segment(2,2) - _qdot);
+	_torque = _kp*(x1.segment(0,2) - _q) + _kd*(x1.segment(2,2) - _qdot);
 
 	// for (int i=0; i< 2; i++){
 	// 	log(i) = x1(i);
@@ -178,20 +184,6 @@ void Test_controller::control()
 
 	
 }
-// int Test_controller::check(VectorXd q, VectorXd prev_q)
-// {
-// 	int diff = 0;
-// 	for (int i = 0; i < _dof; i++){
-// 		cout << "s"<<endl;
-// 		if ( q(i) == prev_q(i))
-// 		{	
-// 			diff = 1;
-// 			cout << "diff"<<endl;
-// 		}
-// 	}
-// 	// cout << "_q : "<<(_q*RAD2DEG).transpose() << " // _prev_q: " <<(_prev_q*RAD2DEG).transpose() << " "<<diff<<endl;
-// 	return diff;
-// }
 VectorXd Test_controller::cal_IK(VectorXd pos_vel)
 {
 	_px = pos_vel(0);
@@ -376,7 +368,8 @@ void Test_controller::InitializeMPC()
 	for(int i=0; i<_dof*Np; i++){
 		R(i,i) = 0.1;
 	}
-	QP.InitializeProblemSize(Np*_dof,  0);//Np*_dof);//Np*_dofj)
+	// QP.InitializeProblemSize(Np*_dof,  0);
+	QP.InitializeProblemSize(Np*_dof, Np*_dof);
 	_H.setZero(QP._num_var, QP._num_var);
 	_g.setZero(QP._num_var);
 	_A.setZero(QP._num_cons, QP._num_var);
@@ -396,6 +389,15 @@ void Test_controller::InitializeMPC()
 	_kp.setZero(2,2);
 	_kd.setZero(2,2);
 
-	_prev_q.setZero(_dof);
-	// F_I.setZero((_dof*2+1)*Np,(_dof*2+1)*Np);
+	_q_min << -50*DEG2RAD, -50*DEG2RAD,0,0;// -2.1750, -2.1750;
+	_q_max <<  50*DEG2RAD,  50*DEG2RAD, 0,0;// 2.1750,  2.1750;
+	_q_min_constraint.setZero(_dof*2*Np);
+	_q_max_constraint.setZero(_dof*2*Np);
+	for(int i=0; i<Np; i++)
+	{
+		_q_min_constraint.segment(i*_dof*2,4) = _q_min;
+		_q_max_constraint.segment(i*_dof*2,4) = _q_max;
+	}
+	_min_constraint.setZero(_dof*2*Np);
+	_max_constraint.setZero(_dof*2*Np);
 }
