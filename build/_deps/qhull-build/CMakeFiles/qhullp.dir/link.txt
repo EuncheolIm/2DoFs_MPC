@@ -1,1 +1,1 @@
-/usr/bin/clang -O3 -DNDEBUG -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/qhullp.dir/src/qhull/unix.c.o -o ../../bin/qhullp  -Wl,-rpath,/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/lib ../../lib/libqhull_p.8.1-alpha1.dylib -lm 
+/usr/bin/cc -O3 -DNDEBUG -rdynamic CMakeFiles/qhullp.dir/src/qhull/unix.c.o -o ../../bin/qhullp  -Wl,-rpath,/home/kist/euncheol/2DoFs_MPC/build/lib ../../lib/libqhull_p.so.8.1-alpha1 -lm 

@@ -4,8 +4,8 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/opt/homebrew/Cellar/cmake/3.27.1/share/cmake/Modules/CMakeDetermineSystem.cmake:211 (message)"
-      - "CMakeLists.txt:16 (project)"
+      - "/home/kist/anaconda3/lib/python3.9/site-packages/cmake/data/share/cmake-3.26/Modules/CMakeDetermineSystem.cmake:204 (message)"
+      - "CMakeLists.txt:10 (project)"
     message: |
-      The system is: Darwin - 22.5.0 - arm64
+      The system is: Linux - 5.15.0-78-generic - x86_64
 ...

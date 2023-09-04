@@ -1,4 +1,4 @@
-# Install script for directory: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src
+# Install script for directory: /home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,6 +27,11 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
+endif()
+
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
@@ -39,22 +44,22 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ccd" TYPE FILE FILES
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/ccd-config.cmake"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/ccd-config-version.cmake"
+    "/home/kist/euncheol/2DoFs_MPC/build/ccd-config.cmake"
+    "/home/kist/euncheol/2DoFs_MPC/build/ccd-config-version.cmake"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/ccd.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kist/euncheol/2DoFs_MPC/build/ccd.pc")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/ccd" TYPE FILE FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/BSD-LICENSE")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/ccd" TYPE FILE FILES "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/BSD-LICENSE")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-build/src/cmake_install.cmake")
+  include("/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-build/src/cmake_install.cmake")
 
 endif()
 

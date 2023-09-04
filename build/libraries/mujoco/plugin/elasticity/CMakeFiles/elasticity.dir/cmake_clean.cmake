@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../../../lib/libelasticity.dylib"
   "../../../../lib/libelasticity.pdb"
+  "../../../../lib/libelasticity.so"
   "CMakeFiles/elasticity.dir/cable.cc.o"
   "CMakeFiles/elasticity.dir/cable.cc.o.d"
   "CMakeFiles/elasticity.dir/elasticity.cc.o"

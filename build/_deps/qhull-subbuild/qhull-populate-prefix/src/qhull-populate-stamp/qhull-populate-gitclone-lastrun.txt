@@ -3,9 +3,9 @@
 # No other meaning or use of this file is supported.
 
 method=git
-command=/opt/homebrew/Cellar/cmake/3.27.1/bin/cmake;-P;/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/tmp/qhull-populate-gitclone.cmake
-source_dir=/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-src
-work_dir=/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps
+command=/home/kist/anaconda3/lib/python3.9/site-packages/cmake/data/bin/cmake;-P;/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/tmp/qhull-populate-gitclone.cmake
+source_dir=/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-src
+work_dir=/home/kist/euncheol/2DoFs_MPC/build/_deps
 repository=https://github.com/qhull/qhull.git
 remote=origin
 init_submodules=TRUE

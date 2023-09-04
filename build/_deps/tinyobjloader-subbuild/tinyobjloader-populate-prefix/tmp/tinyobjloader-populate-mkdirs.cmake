@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-src"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-build"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/tmp"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-src"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-build"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/tmp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-subbuild/tinyobjloader-populate-prefix/src/tinyobjloader-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

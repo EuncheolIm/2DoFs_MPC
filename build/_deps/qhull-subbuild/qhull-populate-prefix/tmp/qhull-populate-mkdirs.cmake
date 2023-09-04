@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-src"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-build"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/tmp"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-src"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-build"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/tmp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/kist/euncheol/2DoFs_MPC/build/_deps/qhull-subbuild/qhull-populate-prefix/src/qhull-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

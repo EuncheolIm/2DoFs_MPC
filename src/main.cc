@@ -484,7 +484,8 @@ int main(int argc, const char** argv) {
     filename = argv[1];
   }
   ////// load XMl ///////
-  char str[100] = "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/model/arm26.xml";
+  // char str[100] = "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/model/arm26.xml";
+  char str[100] = "/home/kist/euncheol/2DoFs_MPC/model/arm26.xml";
   filename = str;
 
   // start physics thread

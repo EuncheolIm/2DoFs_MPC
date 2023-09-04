@@ -1,9 +1,8 @@
 file(REMOVE_RECURSE
-  "../../lib/.8.1"
-  "../../lib/libqhull_p.8.1-alpha1.dylib"
-  "../../lib/libqhull_p.8.1.dylib"
-  "../../lib/libqhull_p.dylib"
   "../../lib/libqhull_p.pdb"
+  "../../lib/libqhull_p.so"
+  "../../lib/libqhull_p.so.8.1"
+  "../../lib/libqhull_p.so.8.1-alpha1"
   "CMakeFiles/qhull_p.dir/src/libqhull/geom.c.o"
   "CMakeFiles/qhull_p.dir/src/libqhull/geom.c.o.d"
   "CMakeFiles/qhull_p.dir/src/libqhull/geom2.c.o"

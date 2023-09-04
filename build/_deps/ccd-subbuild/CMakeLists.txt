@@ -1,13 +1,7 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
 # file Copyright.txt or https://cmake.org/licensing for details.
 
-cmake_minimum_required(VERSION 3.27.1)
-
-# Reject any attempt to use a toolchain file. We must not use one because
-# we could be downloading it here. If the CMAKE_TOOLCHAIN_FILE environment
-# variable is set, the cache variable will have been initialized from it.
-unset(CMAKE_TOOLCHAIN_FILE CACHE)
-unset(ENV{CMAKE_TOOLCHAIN_FILE})
+cmake_minimum_required(VERSION 3.26.4)
 
 # We name the project and the target for the ExternalProject_Add() call
 # to something that will highlight to the user what we are working on if
@@ -18,18 +12,18 @@ project(ccd-populate NONE)
 
 # Pass through things we've already detected in the main project to avoid
 # paying the cost of redetecting them again in ExternalProject_Add()
-set(GIT_EXECUTABLE [==[/opt/homebrew/bin/git]==])
-set(GIT_VERSION_STRING [==[2.41.0]==])
+set(GIT_EXECUTABLE [==[/usr/bin/git]==])
+set(GIT_VERSION_STRING [==[2.25.1]==])
 set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[/opt/homebrew/bin/git;2.41.0]==]
+  [==[/usr/bin/git;2.25.1]==]
 )
 
 
 include(ExternalProject)
 ExternalProject_Add(ccd-populate
-                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/danfis/libccd.git" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "7931e764a19ef6b21b443376c699bbc9c6d4fba8" "GIT_SHALLOW" "FALSE" "PATCH_COMMAND"
-                    SOURCE_DIR          "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src"
-                    BINARY_DIR          "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-build"
+                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/danfis/libccd.git" "GIT_TAG" "7931e764a19ef6b21b443376c699bbc9c6d4fba8" "GIT_SHALLOW" "FALSE" "PATCH_COMMAND"
+                    SOURCE_DIR          "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src"
+                    BINARY_DIR          "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

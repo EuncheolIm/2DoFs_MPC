@@ -2,37 +2,37 @@
 	"sources" : 
 	[
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/CMakeFiles/tinyxml2-populate"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/CMakeFiles/tinyxml2-populate"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/CMakeFiles/tinyxml2-populate.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/CMakeFiles/tinyxml2-populate.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/CMakeFiles/tinyxml2-populate-complete.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/CMakeFiles/tinyxml2-populate-complete.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-build.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-build.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-configure.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-configure.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-download.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-download.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-install.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-install.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-mkdir.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-mkdir.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-patch.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-patch.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-test.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-test.rule"
 		},
 		{
-			"file" : "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-update.rule"
+			"file" : "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyxml2-subbuild/tinyxml2-populate-prefix/src/tinyxml2-populate-stamp/tinyxml2-populate-update.rule"
 		}
 	],
 	"target" : 

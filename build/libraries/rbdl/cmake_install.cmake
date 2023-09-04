@@ -1,4 +1,4 @@
-# Install script for directory: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl
+# Install script for directory: /home/kist/euncheol/2DoFs_MPC/libraries/rbdl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,6 +27,11 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
+endif()
+
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
@@ -38,49 +43,45 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/libraries/rbdl/librbdl.a")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librbdl.a" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librbdl.a")
-    execute_process(COMMAND "/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librbdl.a")
-  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/kist/euncheol/2DoFs_MPC/build/libraries/rbdl/librbdl.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/rbdl" TYPE FILE FILES
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/libraries/rbdl/include/rbdl/rbdl_config.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Body.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraint.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraint_Contact.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraint_Loop.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraints.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Dynamics.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Joint.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Kinematics.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Logging.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Model.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/Quaternion.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/SpatialAlgebraOperators.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/compileassert.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_eigenmath.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_errors.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_math.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_mathutils.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_utils.h"
+    "/home/kist/euncheol/2DoFs_MPC/build/libraries/rbdl/include/rbdl/rbdl_config.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Body.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraint.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraint_Contact.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraint_Loop.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Constraints.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Dynamics.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Joint.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Kinematics.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Logging.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Model.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/Quaternion.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/SpatialAlgebraOperators.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/compileassert.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_eigenmath.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_errors.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_math.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_mathutils.h"
+    "/home/kist/euncheol/2DoFs_MPC/libraries/rbdl/include/rbdl/rbdl_utils.h"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/libraries/rbdl/rbdl.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kist/euncheol/2DoFs_MPC/build/libraries/rbdl/rbdl.pc")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/RBDL" TYPE FILE FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/libraries/rbdl/RBDLConfig.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/RBDL" TYPE FILE FILES "/home/kist/euncheol/2DoFs_MPC/build/libraries/rbdl/RBDLConfig.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/libraries/rbdl/addons/urdfreader/cmake_install.cmake")
+  include("/home/kist/euncheol/2DoFs_MPC/build/libraries/rbdl/addons/urdfreader/cmake_install.cmake")
 
 endif()
 

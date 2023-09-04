@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "2.8.3")
    message(FATAL_ERROR "CMake >= 2.8.3 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.8.3...3.25)
+cmake_policy(VERSION 2.8.3...3.24)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -50,14 +50,14 @@ unset(_cmake_expected_targets)
 add_library(tinyobjloader STATIC IMPORTED)
 
 set_target_properties(tinyobjloader PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/tinyobjloader-src"
+  INTERFACE_INCLUDE_DIRECTORIES "/home/kist/euncheol/2DoFs_MPC/build/_deps/tinyobjloader-src"
 )
 
 # Import target "tinyobjloader" for configuration "Release"
 set_property(TARGET tinyobjloader APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(tinyobjloader PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/lib/libtinyobjloader.a"
+  IMPORTED_LOCATION_RELEASE "/home/kist/euncheol/2DoFs_MPC/build/lib/libtinyobjloader.a"
   )
 
 # This file does not depend on other imported targets which have

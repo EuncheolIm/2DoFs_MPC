@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-src"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-build"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/tmp"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-src"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-build"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/tmp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/kist/euncheol/2DoFs_MPC/build/_deps/eigen3-subbuild/eigen3-populate-prefix/src/eigen3-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

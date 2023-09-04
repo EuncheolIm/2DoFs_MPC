@@ -239,7 +239,7 @@ VectorXd Test_controller::cal_u(VectorXd x, VectorXd dx, VectorXd v)
 	_u = M * v + G + C;
 	return _u;
 }
-VectorXd Test_controller::cal_ddx(VectorXd x, VectorXd dx, VectorXd u)
+	VectorXd Test_controller::cal_ddx(VectorXd x, VectorXd dx, VectorXd u)
 {
 	M(0,0) = (M1 + M2) * pow(l1,2) + M2 * pow(l2,2) + 2 * M2 * l1 * l2 * cos(x(1));
 	M(0,1) = M2 * pow(l2,2) + M2 * l1 * l2 * cos(x(1));

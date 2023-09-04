@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "2.8.3")
    message(FATAL_ERROR "CMake >= 2.8.3 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.8.3...3.25)
+cmake_policy(VERSION 2.8.3...3.24)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -50,15 +50,15 @@ unset(_cmake_expected_targets)
 add_library(ccd STATIC IMPORTED)
 
 set_target_properties(ccd PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/src;/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-build/src"
+  INTERFACE_INCLUDE_DIRECTORIES "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/src;/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-build/src"
 )
 
 # Import target "ccd" for configuration "Release"
 set_property(TARGET ccd APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(ccd PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "C"
-  IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/lib/libm.tbd"
-  IMPORTED_LOCATION_RELEASE "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/lib/libccd.a"
+  IMPORTED_LINK_INTERFACE_LIBRARIES_RELEASE "/usr/lib/x86_64-linux-gnu/libm.so"
+  IMPORTED_LOCATION_RELEASE "/home/kist/euncheol/2DoFs_MPC/build/lib/libccd.a"
   )
 
 # This file does not depend on other imported targets which have

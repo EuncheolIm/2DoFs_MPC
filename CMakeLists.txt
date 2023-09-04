@@ -1,41 +1,13 @@
-# Copyright 2021 DeepMind Technologies Limited
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     https://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+cmake_minimum_required(VERSION 3.15)
+project(sm)
 
-cmake_minimum_required(VERSION 3.16)
-# project(sm)
-# INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
-set(CMAKE_POLICY_DEFAULT_CMP0069 NEW)
-# Default to GLVND if available.
-set(CMAKE_POLICY_DEFAULT_CMP0072 NEW)
-set(CMAKE_C_COMPILER "clang")
-set(CMAKE_CXX_COMPILER "clang++")
-set(CMAKE_OSX_ARCHITECTURES "arm64")
-# This line has to appear before 'PROJECT' in order to be able to disable incremental linking
-set(MSVC_INCREMENTAL_DEFAULT ON)
+set(CMAKE_CXX_STANDARD 17)
 
-project(
-  sm
-  VERSION 2.3.6
-  DESCRIPTION "MuJoCo Template Project for cross-platform"
-)
-
-enable_language(C)
-enable_language(CXX)
-if(APPLE)
-  enable_language(OBJC)
-  enable_language(OBJCXX)
-endif()
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_CXX_FLAGS} -Wl,-no-as-needed")
+#fing eigen library
+# find_package (Eigen3 3.3.7 REQUIRED)
+# message(STATUS "Eigen3 : " ${EIGEN3_INCLUDE_DIR}/Eigen)
+# message(STATUS "current : " ${CMAKE_CURRENT_SOURCE_DIR})
 
 option(MUJOCO_BUILD_EXAMPLES "Build samples for MuJoCo" OFF)
 option(MUJOCO_BUILD_SIMULATE "Build simulate library for MuJoCo" ON)
@@ -45,8 +17,6 @@ option(QPOASES_BUILD_EXAMPLES "Build examples." OFF)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/libraries/mujoco)                             # Add subdirectory
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/libraries/mujoco/sample/cmake") # CMake Path append
-add_subdirectory(${PROJECT_SOURCE_DIR}/libraries/rbdl)                               # Add subdirectory
-list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/rbdl/CMake")                    # CMake Path append
 add_subdirectory(${PROJECT_SOURCE_DIR}/libraries/qpOASES)                            # Add subdirectory
 
 # Check if we are building as standalone project.
@@ -82,7 +52,6 @@ if(MUJOCO_HARDEN)
   endif()
 endif()
 
-
 # Custom Starts from here
 find_package(Eigen3 REQUIRED)
 
@@ -106,7 +75,7 @@ add_executable(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PUBLIC
   ${CMAKE_SOURCE_DIR}/include
   ${CMAKE_SOURCE_DIR}/libraries/qpOASES/include
-  ${CMAKE_SOURCE_DIR}/libraries/rbdl/include/rbdl
+  # ${CMAKE_SOURCE_DIR}/libraries/rbdl/include/rbdl
 )
 target_link_libraries(
   ${PROJECT_NAME}
@@ -116,7 +85,7 @@ target_link_libraries(
   Threads::Threads
   lodepng
   qpOASES
-  rbdl-static
+  # rbdl-static
 )
 target_compile_options(${PROJECT_NAME} PUBLIC ${MUJOCO_SIMULATE_COMPILE_OPTIONS})
 

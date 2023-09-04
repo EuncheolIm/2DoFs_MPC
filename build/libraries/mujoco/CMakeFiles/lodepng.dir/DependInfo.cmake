@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/lodepng-src/lodepng.cpp" "libraries/mujoco/CMakeFiles/lodepng.dir/__/__/_deps/lodepng-src/lodepng.cpp.o" "gcc" "libraries/mujoco/CMakeFiles/lodepng.dir/__/__/_deps/lodepng-src/lodepng.cpp.o.d"
+  "/home/kist/euncheol/2DoFs_MPC/build/_deps/lodepng-src/lodepng.cpp" "libraries/mujoco/CMakeFiles/lodepng.dir/__/__/_deps/lodepng-src/lodepng.cpp.o" "gcc" "libraries/mujoco/CMakeFiles/lodepng.dir/__/__/_deps/lodepng-src/lodepng.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

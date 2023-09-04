@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../../../../lib/libsensor.dylib"
   "../../../../lib/libsensor.pdb"
+  "../../../../lib/libsensor.so"
   "CMakeFiles/sensor.dir/sensor.cc.o"
   "CMakeFiles/sensor.dir/sensor.cc.o.d"
   "CMakeFiles/sensor.dir/touch_grid.cc.o"

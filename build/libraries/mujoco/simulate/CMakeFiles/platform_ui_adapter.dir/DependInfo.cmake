@@ -8,10 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/mujoco/simulate/glfw_adapter.cc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_adapter.cc.o" "gcc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_adapter.cc.o.d"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/mujoco/simulate/glfw_dispatch.cc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_dispatch.cc.o" "gcc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_dispatch.cc.o.d"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/mujoco/simulate/platform_ui_adapter.cc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/platform_ui_adapter.cc.o" "gcc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/platform_ui_adapter.cc.o.d"
-  "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/libraries/mujoco/simulate/glfw_corevideo.mm" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_corevideo.mm.o" "gcc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_corevideo.mm.o.d"
+  "/home/kist/euncheol/2DoFs_MPC/libraries/mujoco/simulate/glfw_adapter.cc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_adapter.cc.o" "gcc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_adapter.cc.o.d"
+  "/home/kist/euncheol/2DoFs_MPC/libraries/mujoco/simulate/glfw_dispatch.cc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_dispatch.cc.o" "gcc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/glfw_dispatch.cc.o.d"
+  "/home/kist/euncheol/2DoFs_MPC/libraries/mujoco/simulate/platform_ui_adapter.cc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/platform_ui_adapter.cc.o" "gcc" "libraries/mujoco/simulate/CMakeFiles/platform_ui_adapter.dir/platform_ui_adapter.cc.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

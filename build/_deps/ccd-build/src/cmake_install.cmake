@@ -1,4 +1,4 @@
-# Install script for directory: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/src
+# Install script for directory: /home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,6 +27,11 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "1")
+endif()
+
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
@@ -38,21 +43,17 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/lib/libccd.a")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libccd.a" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libccd.a")
-    execute_process(COMMAND "/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libccd.a")
-  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/kist/euncheol/2DoFs_MPC/build/lib/libccd.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/ccd" TYPE FILE FILES
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/src/ccd/ccd.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/src/ccd/compiler.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/src/ccd/ccd_export.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/src/ccd/quat.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-src/src/ccd/vec3.h"
-    "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-build/src/ccd/config.h"
+    "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/src/ccd/ccd.h"
+    "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/src/ccd/compiler.h"
+    "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/src/ccd/ccd_export.h"
+    "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/src/ccd/quat.h"
+    "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-src/src/ccd/vec3.h"
+    "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-build/src/ccd/config.h"
     )
 endif()
 
@@ -60,7 +61,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ccd/ccd-targets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ccd/ccd-targets.cmake"
-         "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-build/src/CMakeFiles/Export/1ec81c47dcc60201f3455480ce4c19b2/ccd-targets.cmake")
+         "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-build/src/CMakeFiles/Export/1ec81c47dcc60201f3455480ce4c19b2/ccd-targets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/ccd/ccd-targets-*.cmake")
       if(_cmake_old_config_files)
@@ -73,9 +74,9 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ccd" TYPE FILE FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-build/src/CMakeFiles/Export/1ec81c47dcc60201f3455480ce4c19b2/ccd-targets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ccd" TYPE FILE FILES "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-build/src/CMakeFiles/Export/1ec81c47dcc60201f3455480ce4c19b2/ccd-targets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ccd" TYPE FILE FILES "/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/_deps/ccd-build/src/CMakeFiles/Export/1ec81c47dcc60201f3455480ce4c19b2/ccd-targets-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/ccd" TYPE FILE FILES "/home/kist/euncheol/2DoFs_MPC/build/_deps/ccd-build/src/CMakeFiles/Export/1ec81c47dcc60201f3455480ce4c19b2/ccd-targets-release.cmake")
   endif()
 endif()
 
