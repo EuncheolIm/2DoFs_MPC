@@ -68,14 +68,14 @@ private:
 	VectorQPd _ub;
 	real_t _comptime;
 
-	real_t _H_realt[10000] = { 0 };
-	real_t _g_realt[100] = { 0 };
-	real_t _A_realt[10000] = { 0 };
-	real_t _lbA_realt[100] = { 0 };
-	real_t _ubA_realt[100] = { 0 };
-	real_t _lb_realt[100] = { 0 };
-	real_t _ub_realt[100] = { 0 };
-	real_t _Xopt_realt[100] = { 0 };
+	real_t _H_realt[1000000] = { 0 };
+	real_t _g_realt[10000] = { 0 };
+	real_t _A_realt[1000000] = { 0 };
+	real_t _lbA_realt[10000] = { 0 };
+	real_t _ubA_realt[10000] = { 0 };
+	real_t _lb_realt[10000] = { 0 };
+	real_t _ub_realt[10000] = { 0 };
+	real_t _Xopt_realt[10000] = { 0 };
 
 
 	void Initialize();

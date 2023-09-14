@@ -83,19 +83,19 @@ CMakeFiles/sm.dir/src/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sm.dir/src/main.cc.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/main.cc -o CMakeFiles/sm.dir/src/main.cc.s
 
-CMakeFiles/sm.dir/src/test.cpp.o: CMakeFiles/sm.dir/flags.make
-CMakeFiles/sm.dir/src/test.cpp.o: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test.cpp
-CMakeFiles/sm.dir/src/test.cpp.o: CMakeFiles/sm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sm.dir/src/test.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sm.dir/src/test.cpp.o -MF CMakeFiles/sm.dir/src/test.cpp.o.d -o CMakeFiles/sm.dir/src/test.cpp.o -c /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test.cpp
+CMakeFiles/sm.dir/src/test_del_tau.cpp.o: CMakeFiles/sm.dir/flags.make
+CMakeFiles/sm.dir/src/test_del_tau.cpp.o: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test_del_tau.cpp
+CMakeFiles/sm.dir/src/test_del_tau.cpp.o: CMakeFiles/sm.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sm.dir/src/test_del_tau.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sm.dir/src/test_del_tau.cpp.o -MF CMakeFiles/sm.dir/src/test_del_tau.cpp.o.d -o CMakeFiles/sm.dir/src/test_del_tau.cpp.o -c /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test_del_tau.cpp
 
-CMakeFiles/sm.dir/src/test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sm.dir/src/test.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test.cpp > CMakeFiles/sm.dir/src/test.cpp.i
+CMakeFiles/sm.dir/src/test_del_tau.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sm.dir/src/test_del_tau.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test_del_tau.cpp > CMakeFiles/sm.dir/src/test_del_tau.cpp.i
 
-CMakeFiles/sm.dir/src/test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sm.dir/src/test.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test.cpp -o CMakeFiles/sm.dir/src/test.cpp.s
+CMakeFiles/sm.dir/src/test_del_tau.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sm.dir/src/test_del_tau.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test_del_tau.cpp -o CMakeFiles/sm.dir/src/test_del_tau.cpp.s
 
 CMakeFiles/sm.dir/src/quadraticprogram.cc.o: CMakeFiles/sm.dir/flags.make
 CMakeFiles/sm.dir/src/quadraticprogram.cc.o: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/quadraticprogram.cc
@@ -114,14 +114,14 @@ CMakeFiles/sm.dir/src/quadraticprogram.cc.s: cmake_force
 # Object files for target sm
 sm_OBJECTS = \
 "CMakeFiles/sm.dir/src/main.cc.o" \
-"CMakeFiles/sm.dir/src/test.cpp.o" \
+"CMakeFiles/sm.dir/src/test_del_tau.cpp.o" \
 "CMakeFiles/sm.dir/src/quadraticprogram.cc.o"
 
 # External object files for target sm
 sm_EXTERNAL_OBJECTS =
 
 bin/sm: CMakeFiles/sm.dir/src/main.cc.o
-bin/sm: CMakeFiles/sm.dir/src/test.cpp.o
+bin/sm: CMakeFiles/sm.dir/src/test_del_tau.cpp.o
 bin/sm: CMakeFiles/sm.dir/src/quadraticprogram.cc.o
 bin/sm: CMakeFiles/sm.dir/build.make
 bin/sm: lib/libsimulate.a

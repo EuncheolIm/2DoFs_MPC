@@ -38,14 +38,14 @@
     <body name="body0" pos="0 0 .01">
       <inertial pos="0 0 0" mass="1" diaginertia="0.0002 0.04083 0.04083"/>
       <geom name="hinge0" type="cylinder" pos=" 0.2 0.0 0.0" size=".011 .011" rgba="0.9 0.4 0.6 1"/>
-      <joint name="joint0"  axis="0 0 1" limited="true" pos="0 0 0"  range="-20 20" type="hinge" frictionloss = "2" damping="1"/>
+      <joint name="joint0"  axis="0 0 1" pos="0 0 0"  type="hinge" armature="1.0" damping="1"/>
       <geom name="link1" type="box" contype="0" conaffinity="0" pos="0.1 0.0 0.0" size="0.1 0.01 0.01" rgba="1.0 1.0 0.0 1"/>
         <body name="body1" pos="0.2 0 0.0">
         <inertial pos="0 0 0" mass="1" diaginertia="0.0002 0.04083 0.04083"/>
         <!-- <site name="hand_site" pos="0 0 0" type="box"  size=".02 .011 .01" rgba="0.9 0.4 1 1"/> -->
         
         <geom name="hinge1" type="cylinder" pos=" 0.2 0.0 0.0" size=".011 .011" rgba="0.9 0.4 0.6 1"/>
-        <joint name="joint1" axis="0 0 1" limited="true" pos="0 0 0" range="-20 20" type="hinge" frictionloss = "2" damping="1"/>
+        <joint name="joint1" axis="0 0 1" pos="0 0 0"  type="hinge" armature="1.0" damping="1"/>
         <geom name="link2" type="box" contype="0" conaffinity="0" pos=" 0.1 0 0.0" size="0.1 0.01 0.01" rgba="1.0 1.0 0.0 1"/>
           <body name="body2" pos="0.2 0 0.0">
           <inertial pos="0 0 0" mass="0.5" diaginertia="0.0002 0.01333 0.01333"/>
@@ -58,9 +58,6 @@
   </worldbody>
 
   <actuator>
-    <!-- <position  name="j1" joint="joint0" kp = "200"/>
-    <position  name="j2" joint="joint1" kp = "200"/> -->
-
     <motor  name="j1" joint="joint0" />
     <motor  name="j2" joint="joint1" />
   </actuator>

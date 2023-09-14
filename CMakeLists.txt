@@ -96,8 +96,8 @@ include_directories(
 )
 add_executable(${PROJECT_NAME} 
     src/main.cc
-    # src/test_goal_Cd.cpp
-    src/test.cpp
+    src/test_del_tau.cpp
+    # src/test_qddot.cpp
     src/quadraticprogram.cc
     ${SIMULATE_RESOURCE_FILES}
     ${RBDL_SOURCES}

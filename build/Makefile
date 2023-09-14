@@ -1088,29 +1088,29 @@ src/quadraticprogram.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sm.dir/build.make CMakeFiles/sm.dir/src/quadraticprogram.cc.s
 .PHONY : src/quadraticprogram.cc.s
 
-src/test.o: src/test.cpp.o
-.PHONY : src/test.o
+src/test_del_tau.o: src/test_del_tau.cpp.o
+.PHONY : src/test_del_tau.o
 
 # target to build an object file
-src/test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sm.dir/build.make CMakeFiles/sm.dir/src/test.cpp.o
-.PHONY : src/test.cpp.o
+src/test_del_tau.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sm.dir/build.make CMakeFiles/sm.dir/src/test_del_tau.cpp.o
+.PHONY : src/test_del_tau.cpp.o
 
-src/test.i: src/test.cpp.i
-.PHONY : src/test.i
+src/test_del_tau.i: src/test_del_tau.cpp.i
+.PHONY : src/test_del_tau.i
 
 # target to preprocess a source file
-src/test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sm.dir/build.make CMakeFiles/sm.dir/src/test.cpp.i
-.PHONY : src/test.cpp.i
+src/test_del_tau.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sm.dir/build.make CMakeFiles/sm.dir/src/test_del_tau.cpp.i
+.PHONY : src/test_del_tau.cpp.i
 
-src/test.s: src/test.cpp.s
-.PHONY : src/test.s
+src/test_del_tau.s: src/test_del_tau.cpp.s
+.PHONY : src/test_del_tau.s
 
 # target to generate assembly for a file
-src/test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sm.dir/build.make CMakeFiles/sm.dir/src/test.cpp.s
-.PHONY : src/test.cpp.s
+src/test_del_tau.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sm.dir/build.make CMakeFiles/sm.dir/src/test_del_tau.cpp.s
+.PHONY : src/test_del_tau.cpp.s
 
 # Help Target
 help:
@@ -1198,9 +1198,9 @@ help:
 	@echo "... src/quadraticprogram.o"
 	@echo "... src/quadraticprogram.i"
 	@echo "... src/quadraticprogram.s"
-	@echo "... src/test.o"
-	@echo "... src/test.i"
-	@echo "... src/test.s"
+	@echo "... src/test_del_tau.o"
+	@echo "... src/test_del_tau.i"
+	@echo "... src/test_del_tau.s"
 .PHONY : help
 
 

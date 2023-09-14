@@ -138,6 +138,19 @@ private:
 	VectorXd _max_constraint;
 
 	MatrixXd _Id_A;
+	VectorXd _constraint;
+
+	double kp,kd;
+	Eigen::Matrix<double, 2, 1> _pre_q;
+	double check5;
+
+	VectorXd tanh(VectorXd qddot);
+	Eigen::Matrix<double, 2, 1> _qddot;
+	Eigen::Matrix<double, 2, 1> _torque_freq;
+	Eigen::Matrix<double, 4, 4> _tempQ;
+
+	Eigen::Matrix<double, 2, 1> _x1_torque;
+	Eigen::Matrix<double, 4, 1> _x1_state;
 };
 
 #endif

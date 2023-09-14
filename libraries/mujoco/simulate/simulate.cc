@@ -1129,6 +1129,7 @@ int ComputeFontScale(const mj::PlatformUIAdapter& platform_ui) {
   } else {
     fs = 150;
   }
+  // fs = 100;
   fs = mju_round(fs * 0.02) * 50;
   fs = mjMIN(300, mjMAX(100, fs));
 

@@ -2533,7 +2533,7 @@ CMakeFiles/sm.dir/src/quadraticprogram.cc.o: /Users/im-euncheol/Desktop/KIST/2Do
   /opt/homebrew/include/eigen3/Eigen/src/misc/Kernel.h \
   /opt/homebrew/include/eigen3/Eigen/src/misc/RealSvd2x2.h
 
-CMakeFiles/sm.dir/src/test.cpp.o: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test.cpp \
+CMakeFiles/sm.dir/src/test_del_tau.cpp.o: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test_del_tau.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityInternal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityVersions.h \
@@ -3537,6 +3537,8 @@ CMakeFiles/sm.dir/src/test.cpp.o: /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/
   /opt/homebrew/include/eigen3/Eigen/src/misc/Kernel.h \
   /opt/homebrew/include/eigen3/Eigen/src/misc/RealSvd2x2.h
 
+
+/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test_del_tau.cpp:
 
 /opt/homebrew/include/eigen3/Eigen/src/misc/RealSvd2x2.h:
 
@@ -5479,8 +5481,6 @@ _deps/glfw3-src/include/GLFW/glfw3.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CFNetwork.framework/Headers/CFHTTPMessage.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/perfect_forward.h:
-
-/Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/bind_front.h:
 

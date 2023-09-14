@@ -2535,8 +2535,8 @@ CMakeFiles/sm.dir/src/quadraticprogram.cc.o
  /opt/homebrew/include/eigen3/Eigen/src/misc/Kernel.h
  /opt/homebrew/include/eigen3/Eigen/src/misc/RealSvd2x2.h
 
-CMakeFiles/sm.dir/src/test.cpp.o
- /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test.cpp
+CMakeFiles/sm.dir/src/test_del_tau.cpp.o
+ /Users/im-euncheol/Desktop/KIST/2DoFs_MPC/src/test_del_tau.cpp
  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/Availability.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityInternal.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/AvailabilityVersions.h
